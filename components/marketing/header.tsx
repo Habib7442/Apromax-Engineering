@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Industries", href: "/industries" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "About", href: "/about" },
+  { name: "Careers", href: "/careers" },
   { name: "Insights", href: "/blog" },
 ];
 
@@ -97,7 +98,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="AproMax Engineering"
             width={120}
             height={32}

@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
             className="relative rounded-xl overflow-hidden border border-border aspect-[16/9] shadow-sm group"
           >
             <Image
-              src="/images/about_engineers.png"
+              src="/images/about_engineers.webp"
               alt="Engineers collaborating on machinery"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -125,9 +125,10 @@ export default function WhyChooseUs() {
             className="relative rounded-xl overflow-hidden border border-border aspect-[16/9] shadow-sm group"
           >
             <Image
-              src="/images/case_thermal.png"
+              src="/images/case_thermal.webp"
               alt="CAD thermal simulation rendering"
               fill
+              priority
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
             />

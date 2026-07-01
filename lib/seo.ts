@@ -52,34 +52,37 @@ export const siteConfig = {
     themeColor: "#0A5CF0", // brand blue (from logo)
 
     // Brand assets (place in /public or Supabase Storage public bucket)
-    logo: "/logo.png",
-    ogImageDefault: "/og-image.jpg", // 1200x630 branded fallback
+    logo: "/logo.webp",
+    ogImageDefault: "/og-image.webp", // 1200x630 branded fallback
     favicon: "/favicon.ico",
 
-    // Contact & identity — CONFIRM public values with stakeholders (see PRD §17)
     contact: {
-        email: "support@apromaxeng.com", // TODO confirm
-        phone: "+91 95373 30099",
-        // Registered office: Assam, India (Karimganj/Cachar). LinkedIn lists Guwahati.
+        email: "info@apromaxeng.com",
+        phone: "+91-9577291349",
+        phoneUS: "+1 (312) 313-9125",
         address: {
+            streetAddress: "57 Idgah Rd, Sijubari, Hatigaon",
             locality: "Guwahati",
             region: "Assam",
+            postalCode: "781038",
             country: "IN",
-            // streetAddress / postalCode: TODO confirm before publishing schema
         },
-        hoursText: "Mon–Sat, 9:00 AM – 11:30 PM IST",
+        hoursText: "Mon–Fri, 9:00 AM – 6:00 PM IST",
     },
 
     // Markets served — signals to search engines and buyers.
     areaServed: ["United States", "Canada", "United Kingdom", "European Union", "GCC", "India", "Worldwide"],
 
     social: {
-        linkedin: "https://www.linkedin.com/company/apromax-eng-llp/",
-        // add others as they exist
+        linkedin: "https://www.linkedin.com/company/apromax-eng-llp/posts/?feedView=all",
+        instagram: "https://www.instagram.com/apromax__/",
     },
 
     // Same-as URLs for Organization schema
-    sameAs: ["https://www.linkedin.com/company/apromax-eng-llp/"],
+    sameAs: [
+        "https://www.linkedin.com/company/apromax-eng-llp/posts/?feedView=all",
+        "https://www.instagram.com/apromax__/"
+    ],
 
     // Founding info (for Organization schema)
     foundingDate: "2024-08-30",

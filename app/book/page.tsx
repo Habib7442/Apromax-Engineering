@@ -26,7 +26,30 @@ function CalContent() {
   const name = searchParams.get("name") || "";
   const email = searchParams.get("email") || "";
   const notes = searchParams.get("notes") || "";
+  const [iframeLoading, setIframeLoading] = React.useState(true);
 
+  // 1. Listen for iframe load events natively in the DOM
+  React.useEffect(() => {
+    let isActive = true;
+    const timer = setInterval(() => {
+      const iframe = document.querySelector('iframe[src*="cal.com"]');
+      if (iframe && isActive) {
+        clearInterval(timer);
+        iframe.addEventListener('load', () => {
+          if (isActive) {
+            setIframeLoading(false);
+          }
+        });
+      }
+    }, 100);
+
+    return () => {
+      isActive = false;
+      clearInterval(timer);
+    };
+  }, []);
+
+  // 2. Initialize Cal API and listen for events
   React.useEffect(() => {
     (async function initCal() {
       try {
@@ -41,6 +64,16 @@ function CalContent() {
             },
             hideEventTypeDetails: false,
             layout: "month_view"
+          });
+
+          // Dismiss loading screen when any action/event is sent from the iframe
+          cal("on", {
+            action: "*",
+            callback: (e: any) => {
+              if (e?.detail?.action !== "dimensionsChanged") {
+                setIframeLoading(false);
+              }
+            }
           });
 
           // Listen for successful booking event from the iframe
@@ -84,6 +117,16 @@ function CalContent() {
 
         {/* Cal.com React component container */}
         <div className="w-full bg-white border border-slate-200 rounded-2xl p-2 md:p-6 shadow-sm min-h-[650px] relative overflow-hidden">
+          {/* Overlay loading spinner */}
+          {iframeLoading && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-20">
+              <div className="size-10 border-4 border-slate-200 border-t-primary rounded-full animate-spin mb-4" />
+              <p className="text-muted-foreground text-sm font-medium">
+                Connecting to scheduler...
+              </p>
+            </div>
+          )}
+
           <Cal
             namespace="30min"
             calLink={baseLink}

@@ -143,6 +143,12 @@
   html {
     @apply font-sans;
   }
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    @apply cursor-pointer;
+  }
 }
 
 @keyframes progress-loading {

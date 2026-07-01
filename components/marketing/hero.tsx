@@ -55,14 +55,14 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#070b19] pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-white/5">
       {/* 1. Background Video & Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden transform-gpu">
         {/* Loop video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-50 absolute inset-0"
+          className="w-full h-full object-cover opacity-50 absolute inset-0 transform-gpu will-change-transform"
         >
           <source src="/api/hero-video" type="video/mp4" />
           <source src="https://sdgenxchgjsoyoecoctv.supabase.co/storage/v1/object/public/assets/team-video.mp4" type="video/mp4" />
@@ -88,7 +88,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-[10%] left-[10%] w-96 h-96 rounded-full bg-[#0a5cf0]/20 blur-[120px]"
+          className="absolute top-[10%] left-[10%] w-96 h-96 rounded-full bg-[#0a5cf0]/20 blur-[120px] transform-gpu will-change-transform"
         />
         
         {/* Glow 2: Cyan */}
@@ -102,7 +102,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#06b6d4]/15 blur-[130px]"
+          className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#06b6d4]/15 blur-[130px] transform-gpu will-change-transform"
         />
       </div>
 

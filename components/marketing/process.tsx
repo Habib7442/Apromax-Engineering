@@ -65,18 +65,20 @@ export default function Process() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative"
         >
-          {/* Connector Line for Desktop */}
-          <div className="hidden lg:block absolute top-[22px] left-[10%] right-[10%] h-0.5 bg-border z-0" />
-
-          {steps.map((step) => (
+          {steps.map((step, index) => (
             <motion.div 
               key={step.num}
               variants={itemVariants}
               whileHover={{ y: -4 }}
               className="flex flex-col items-center lg:items-start text-center lg:text-left relative z-10 group cursor-default"
             >
+              {/* Connector Line - drawn inside each column pointing to the next */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-[22px] left-11 w-[calc(100%_-_12px)] h-0.5 bg-border z-0" />
+              )}
+
               {/* Number Bubble */}
-              <div className="size-11 rounded-full bg-white border-2 border-primary-container flex items-center justify-center text-primary-container font-heading font-bold text-sm mb-6 shadow-sm group-hover:bg-primary-container group-hover:text-white transition-colors duration-300">
+              <div className="size-11 rounded-full bg-white border-2 border-primary-container flex items-center justify-center text-primary-container font-heading font-bold text-sm mb-6 shadow-sm group-hover:bg-primary-container group-hover:text-white transition-colors duration-300 relative z-10">
                 {step.num}
               </div>
 

@@ -12,7 +12,7 @@ const featuredProjects = [
     client: "Aerospace Enclosures Corp",
     metric: "35% Heat Dissipation Imp.",
     category: "FEA & CFD Simulation",
-    image: "/images/case_thermal.png",
+    image: "/images/case_thermal.webp",
     desc: "Redesigning internal structural ducts and heat sink fins using ANSYS Fluent to eliminate localized hotspots in extreme environmental modules."
   },
   {
@@ -20,7 +20,7 @@ const featuredProjects = [
     client: "Zenith Energy Group",
     metric: "450+ SolidWorks Model Nodes",
     category: "Plant & Mechanical Eng.",
-    image: "/images/case_plant.png",
+    image: "/images/case_plant.webp",
     desc: "Developing full structural blueprint drafting, pipeline route models, and valve configurations for a modular gas processing plant in Texas."
   }
 ];

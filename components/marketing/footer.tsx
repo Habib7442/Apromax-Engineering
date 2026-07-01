@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="md:col-span-4 flex flex-col justify-start">
             <Link href="/" className="mb-5 inline-block">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="AproMax Engineering"
                 width={120}
                 height={32}
@@ -29,11 +29,11 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2">
               {[
-                { name: "linkedin", href: "https://www.linkedin.com/company/apromax-eng-llp/" },
+                { name: "linkedin", href: "https://www.linkedin.com/company/apromax-eng-llp/posts/?feedView=all" },
                 { name: "X", href: "https://x.com/apromaxeng" },
                 { name: "facebook", href: "https://facebook.com/apromaxeng" },
-                { name: "instagram", href: "https://instagram.com/apromaxeng" },
-                { name: "whatsapp", href: "https://wa.me/919537330099" }
+                { name: "instagram", href: "https://www.instagram.com/apromax__/" },
+                { name: "whatsapp", href: "https://wa.me/919577291349" }
               ].map((social) => (
                 <a
                   key={social.name}
@@ -44,7 +44,7 @@ export default function Footer() {
                   aria-label={social.name}
                 >
                   <Image
-                    src={`/social-icons/${social.name}.png`}
+                    src={`/social-icons/${social.name}.webp`}
                     alt={social.name}
                     width={16}
                     height={16}
@@ -133,17 +133,20 @@ export default function Footer() {
                 <MapPin className="size-4 text-accent shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
                   AproMax Engineering LLP<br />
-                  Guwahati, Assam, India<br />
-                  <span className="text-[10px] text-white/40">LLPIN: ACJ-2244</span>
+                  57 Idgah Rd, Sijubari, Hatigaon,<br />
+                  Guwahati, Assam 781038, India
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5 text-white/60 text-xs">
+                <Phone className="size-4 text-accent shrink-0 mt-0.5" />
+                <span className="flex flex-col">
+                  <span>+91-9577291349 <span className="text-[10px] text-white/45">(IN)</span></span>
+                  <span>+1 (312) 313-9125 <span className="text-[10px] text-white/45">(US)</span></span>
                 </span>
               </li>
               <li className="flex items-center gap-2.5 text-white/60 text-xs">
-                <Phone className="size-4 text-accent shrink-0" />
-                <span>+91 95373 30099</span>
-              </li>
-              <li className="flex items-center gap-2.5 text-white/60 text-xs">
                 <Mail className="size-4 text-accent shrink-0" />
-                <span>support@apromaxeng.com</span>
+                <span>info@apromaxeng.com</span>
               </li>
             </ul>
           </div>

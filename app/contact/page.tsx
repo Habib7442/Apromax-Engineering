@@ -109,9 +109,9 @@ export default function ContactPage() {
                       <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Registered HQ</h4>
                       <p className="text-muted-foreground text-sm">
                         AproMax Engineering LLP<br />
-                        Guwahati, Assam, India
+                        57 Idgah Rd, Sijubari, Hatigaon,<br />
+                        Guwahati, Assam 781038, India
                       </p>
-                      <span className="text-[11px] font-medium text-slate-400 block mt-1">LLPIN: ACJ-2244</span>
                     </div>
                   </div>
 
@@ -134,8 +134,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Email Correspondence</h4>
-                      <a href="mailto:support@apromaxeng.com" className="text-primary hover:underline text-sm font-medium">
-                        support@apromaxeng.com
+                      <a href="mailto:info@apromaxeng.com" className="text-primary hover:underline text-sm font-medium">
+                        info@apromaxeng.com
                       </a>
                     </div>
                   </div>
@@ -146,9 +146,16 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Direct Call</h4>
-                      <a href="tel:+919537330099" className="text-muted-foreground hover:text-primary text-sm font-medium">
-                        +91 95373 30099
-                      </a>
+                      <div className="flex flex-col gap-1">
+                        <a href="tel:+919577291349" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-1.5">
+                          <span>+91-9577291349</span>
+                          <span className="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5 font-bold uppercase tracking-wider scale-90">IN</span>
+                        </a>
+                        <a href="tel:+13123139125" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-1.5">
+                          <span>+1 (312) 313-9125</span>
+                          <span className="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5 font-bold uppercase tracking-wider scale-90">US</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -301,6 +308,20 @@ export default function ContactPage() {
               </div>
             </div>
 
+          </div>
+
+          {/* Full-width Google Map Embed */}
+          <div className="w-full bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm h-[350px] md:h-[450px] relative mt-12 md:mt-16">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14328.211116543436!2d91.7801895!3d26.129822049999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a592f3d88b54b%3A0xda331cb5555e5dfc!2sHatigaon%2C%20Guwahati%2C%20Assam!5e0!3m2!1sen!2sin!4v1782900438016!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="AproMax office location map"
+            />
           </div>
 
         </div>

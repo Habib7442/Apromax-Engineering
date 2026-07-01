@@ -102,7 +102,7 @@ const services = [
     name: "Engineering Services",
     desc: "Managed coordination of mechanical, electrical, civil, electronics, control systems, and plant layouts.",
     slug: "engineering",
-    image: "/images/service_engineering.png",
+    image: "/images/service_engineering.webp",
     chips: ["Mechanical", "Electrical", "Civil", "Electronics", "Control Systems", "Plant", "Automotive", "Energy & Utilities", "Industrial Equipment"],
     glowColor: "group-hover:border-[#0a5cf0]/50 group-hover:shadow-[#0a5cf0]/5"
   },
@@ -111,7 +111,7 @@ const services = [
     name: "Design Services",
     desc: "From conceptual CAD drafts and 3D component models to industrial styling and assembly blueprints.",
     slug: "design",
-    image: "/images/service_design.png",
+    image: "/images/service_design.webp",
     chips: ["CAD Design", "3D Modeling", "Product Design", "Industrial Design", "UX/UI Design"],
     glowColor: "group-hover:border-[#06b6d4]/50 group-hover:shadow-[#06b6d4]/5"
   },
@@ -120,7 +120,7 @@ const services = [
     name: "Web And App Development",
     desc: "Enterprise-grade web platforms, custom customer portals, responsive layouts, and cross-platform mobile apps.",
     slug: "web-app",
-    image: "/images/service_web.png",
+    image: "/images/service_web.webp",
     chips: ["Website Design", "Website Dev", "Responsive Web", "E-commerce", "Mobile Apps", "Cross-Platform", "Enterprise Apps", "Custom Apps"],
     glowColor: "group-hover:border-[#10b981]/50 group-hover:shadow-[#10b981]/5"
   },
@@ -129,7 +129,7 @@ const services = [
     name: "Analysis Services",
     desc: "High-fidelity finite element analysis (FEA) and computational fluid dynamics (CFD) load, thermal, and flow testing.",
     slug: "analysis",
-    image: "/images/case_thermal.png",
+    image: "/images/case_thermal.webp",
     chips: ["Structural Analysis", "Thermal Analysis", "FEA Solver", "CFD Flow"],
     glowColor: "group-hover:border-[#6366f1]/50 group-hover:shadow-[#6366f1]/5"
   },
@@ -138,7 +138,7 @@ const services = [
     name: "Development Services",
     desc: "Bridging the gap between design and reality with prototype verification, hardware testing, and custom software.",
     slug: "prototyping",
-    image: "/images/about_engineers.png",
+    image: "/images/about_engineers.webp",
     chips: ["Prototype Dev", "Product Testing", "Custom Software", "Python / C++", "Java / JS"],
     glowColor: "group-hover:border-[#f59e0b]/50 group-hover:shadow-[#f59e0b]/5"
   },
@@ -147,7 +147,7 @@ const services = [
     name: "Other Services",
     desc: "Niche capabilities including legacy reverse engineering, failure forensics, value optimization, and IP files.",
     slug: "specialized",
-    image: "/images/case_plant.png",
+    image: "/images/case_plant.webp",
     chips: ["Reverse Engineering", "Value Engineering", "Failure Analysis", "IP Development"],
     glowColor: "group-hover:border-[#f43f5e]/50 group-hover:shadow-[#f43f5e]/5"
   },
@@ -216,6 +216,7 @@ export default function ServicesGrid() {
                   src={service.image}
                   alt={service.name}
                   fill
+                  priority={service.slug === "engineering"}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover absolute inset-0 transition-transform duration-500 group-hover:scale-105 z-0"
                 />
