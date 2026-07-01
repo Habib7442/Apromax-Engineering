@@ -102,7 +102,7 @@ export default function Hero() {
             
             {/* Brief description */}
             <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-lg mb-8">
-              AproMax Engineering is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
+              AproMax is your managed engineering services partner. We coordinate scoping, design, and quality assurance through a vetted network of global specialists to deliver precise solutions.
             </p>
             
             {/* Action buttons */}
