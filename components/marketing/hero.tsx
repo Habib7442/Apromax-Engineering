@@ -20,10 +20,33 @@ export default function Hero() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    
+    const serviceLabels: Record<string, string> = {
+      engineering: "Engineering (Mechanical/Electrical)",
+      design: "Design (CAD/3D Product)",
+      development: "Web and App Development",
+      analysis: "Analysis Services (CFD/FEA)",
+      other: "Specialized/Other Services"
+    };
+
+    const serviceLabel = serviceLabels[formData.service] || formData.service;
+    
+    const messageText = `Hello AproMax! I would like to request a consultation.
+
+*First Name:* ${formData.firstName}
+*Last Name:* ${formData.lastName}
+*Work Email:* ${formData.email}
+*Service of Interest:* ${serviceLabel}
+*Project Notes:* ${formData.message || "N/A"}`;
+
+    const encodedMessage = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/919101362280?text=${encodedMessage}`;
+
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-    }, 1000);
+      window.open(whatsappUrl, "_blank");
+    }, 800);
   };
 
   return (
