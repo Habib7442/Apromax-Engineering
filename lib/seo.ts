@@ -53,7 +53,7 @@ export const siteConfig = {
 
     // Brand assets (place in /public or Supabase Storage public bucket)
     logo: "/logo.webp",
-    ogImageDefault: "/og-image.webp", // 1200x630 branded fallback
+    ogImageDefault: "/og-image.jpg", // 1200x630 branded fallback
     favicon: "/favicon.ico",
 
     contact: {
