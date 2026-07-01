@@ -4,9 +4,11 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
+  const router = useRouter();
   const [submitted, setSubmitted] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
@@ -20,9 +22,28 @@ export default function Hero() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const serviceLabels: Record<string, string> = {
+      engineering: "Engineering Services",
+      design: "Design Services",
+      development: "Web and App Development",
+      analysis: "Analysis Services",
+      other: "Specialized Services"
+    };
+    const serviceLabel = serviceLabels[formData.service] || formData.service;
+    const notes = `Service: ${serviceLabel}\nNotes: ${formData.message || "N/A"}`;
+
+    const params = new URLSearchParams({
+      name: fullName,
+      email: formData.email,
+      notes: notes
+    });
+
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
+      router.push(`/book?${params.toString()}`);
     }, 800);
   };
 
@@ -176,7 +197,7 @@ export default function Hero() {
                   
                   {/* Description */}
                   <p className="text-white/70 text-xs md:text-[13px] leading-relaxed max-w-xs mx-auto">
-                    Thank you. An AproMax engineering coordinator will review your parameters and reach out within 1 business day under full confidentiality.
+                    Your parameters are formatted. We are redirecting you to our scheduling calendar to pick a time slot...
                   </p>
                 </div>
               ) : (
