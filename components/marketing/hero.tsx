@@ -27,7 +27,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#070b19] py-16 lg:py-24 border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#070b19] pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-white/5">
       {/* 1. Background Video & Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Loop video */}
@@ -77,7 +77,7 @@ export default function Hero() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch min-h-[580px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-stretch lg:min-h-[580px]">
           {/* Left Panel: Content Block */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -90,23 +90,23 @@ export default function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFF5E0] bg-[#FFF5E0]/10 border border-[#FFF5E0]/20 px-3 py-1 rounded-full uppercase tracking-widest mb-6 w-fit"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFF5E0] bg-[#FFF5E0]/10 border border-[#FFF5E0]/20 px-3 py-1 rounded-full uppercase tracking-widest mb-4 lg:mb-6 w-fit"
             >
               Engineering Services
             </motion.span>
             
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+            <h1 className="font-heading font-bold text-4xl md:text-6xl tracking-tight leading-[1.05] mb-4 lg:mb-6">
               <span className="text-[#FFF5E0]">Creative</span> <span className="text-white">&</span> <span className="text-[#06b6d4]">Professional</span>
             </h1>
             
             {/* Brief description */}
-            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-lg mb-8">
+            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-lg mb-6 lg:mb-8">
               AproMax is your managed engineering services partner. We coordinate scoping, design, and quality assurance through a vetted network of global specialists to deliver precise solutions.
             </p>
             
             {/* Action buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12">
               <Link href="/services">
                 <Button className="w-full sm:w-auto h-12 bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-semibold rounded-lg px-6 shadow-md hover:shadow-lg transition-all group cursor-pointer border-0">
                   Explore Services
