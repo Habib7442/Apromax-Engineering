@@ -1,0 +1,312 @@
+"use client";
+
+import * as React from "react";
+import { useRouter } from "next/navigation";
+import { Mail, Phone, MapPin, Clock, ArrowRight, ShieldCheck, Globe } from "lucide-react";
+import Header from "@/components/marketing/header";
+import Footer from "@/components/marketing/footer";
+import { createLeadAction } from "@/lib/actions/leads";
+import { Button } from "@/components/ui/button";
+
+export default function ContactPage() {
+  const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
+  const [formData, setFormData] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    service: "engineering",
+    message: ""
+  });
+  
+  // Honeypot field for simple spam prevention
+  const [honeypot, setHoneypot] = React.useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (honeypot) {
+      // Ignore submission from spam bots
+      setSubmitted(true);
+      return;
+    }
+    
+    setLoading(true);
+
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const serviceLabels: Record<string, string> = {
+      engineering: "Engineering (Mechanical/Electrical)",
+      design: "CAD Design & 3D Modeling",
+      analysis: "Analysis & Simulation (FEA/CFD)",
+      development: "Web & App Development",
+      other: "Specialized Services"
+    };
+    const serviceLabel = serviceLabels[formData.service] || formData.service;
+    const notes = `Service: ${serviceLabel}\nNotes: ${formData.message || "N/A"}`;
+
+    // Save lead to Supabase
+    const result = await createLeadAction(formData);
+    if (!result.success) {
+      console.error("Failed to save lead:", result.error);
+    }
+
+    const params = new URLSearchParams({
+      name: fullName,
+      email: formData.email,
+      notes: notes
+    });
+
+    setLoading(false);
+    setSubmitted(true);
+    
+    // Redirect to scheduling page
+    router.push(`/book?${params.toString()}`);
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen bg-[#fcfdff]">
+      <Header />
+      {/* Spacer for fixed header */}
+      <div className="h-[76px]" />
+
+      <main className="flex-grow py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Header section */}
+          <div className="max-w-3xl mb-12 md:mb-16">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-3">
+              Contact Us
+            </span>
+            <h1 className="font-heading font-bold text-3xl md:text-5xl text-[#070b19] tracking-tight mb-4">
+              Let's Discuss Your Engineering Requirements
+            </h1>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+              Partner with a vetted, global network of engineering specialists. Submit your details below, and we'll redirect you to schedule a technical scoping call with our coordinators.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Left Column: Office info & Regional indicators */}
+            <div className="lg:col-span-5 space-y-8">
+              
+              {/* Regional coordination card */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+                <h3 className="font-heading font-semibold text-lg text-[#070b19] mb-4 flex items-center gap-2">
+                  <Globe className="size-5 text-primary" />
+                  Global Delivery, Indian Precision
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  We coordinate custom scoping, simulation, and software projects from our operations center in India, allowing us to deliver high-performance, cost-effective US-market results.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex gap-4 items-start">
+                    <div className="size-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                      <MapPin className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Registered HQ</h4>
+                      <p className="text-muted-foreground text-sm">
+                        AproMax Engineering LLP<br />
+                        Guwahati, Assam, India
+                      </p>
+                      <span className="text-[11px] font-medium text-slate-400 block mt-1">LLPIN: ACJ-2244</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 items-start">
+                    <div className="size-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                      <Clock className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Timezone / Support Hours</h4>
+                      <p className="text-muted-foreground text-sm">
+                        9:00 AM – 6:00 PM IST (Mon – Fri)<br />
+                        <span className="text-xs text-primary font-medium">Auto-translation for US Timezones supported</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 items-start">
+                    <div className="size-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                      <Mail className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Email Correspondence</h4>
+                      <a href="mailto:support@apromaxeng.com" className="text-primary hover:underline text-sm font-medium">
+                        support@apromaxeng.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 items-start">
+                    <div className="size-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 mt-0.5">
+                      <Phone className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Direct Call</h4>
+                      <a href="tel:+919537330099" className="text-muted-foreground hover:text-primary text-sm font-medium">
+                        +91 95373 30099
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* NDA Protection banner */}
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex gap-4 items-start">
+                <div className="size-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="size-5 text-emerald-600" />
+                </div>
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-[#070b19] mb-1">NDA Secured Scoping</h4>
+                  <p className="text-muted-foreground text-xs leading-relaxed">
+                    We maintain absolute intellectual property safety. All CAD files, FEA/CFD models, and source code are protected under robust corporate confidentiality agreements.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Contact form card */}
+            <div className="lg:col-span-7">
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm">
+                <div className="mb-8">
+                  <h2 className="font-heading font-bold text-xl md:text-2xl text-[#070b19] mb-2">
+                    Request a Technical Consultation
+                  </h2>
+                  <p className="text-muted-foreground text-sm">
+                    Fill out the form below to initiate. You'll be redirected to schedule a date/time on our calendar.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  
+                  {/* Honeypot field (hidden from normal users) */}
+                  <input
+                    type="text"
+                    name="website_url"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    className="hidden"
+                    autoComplete="off"
+                  />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="firstName" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        required
+                        placeholder="John"
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="lastName" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        required
+                        placeholder="Doe"
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                      Work Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      placeholder="john@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                      Primary Service of Interest
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="service"
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground outline-none transition-all appearance-none cursor-pointer"
+                      >
+                        <option value="engineering">Engineering (Mechanical/Electrical)</option>
+                        <option value="design">CAD Design & 3D Modeling</option>
+                        <option value="analysis">Analysis & Simulation (FEA/CFD)</option>
+                        <option value="development">Web & App Development</option>
+                        <option value="other">Specialized Services</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
+                        <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                      Briefly Outline Your Project Details
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={5}
+                      required
+                      placeholder="Brief description of requirements, tolerances, or solver inputs..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all resize-none"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-primary hover:bg-primary/95 text-white font-semibold rounded-lg py-4 transition-all flex items-center justify-center gap-2 group shadow-sm hover:shadow"
+                  >
+                    {loading ? (
+                      <>
+                        <div className="size-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Saving Lead Details...
+                      </>
+                    ) : (
+                      <>
+                        Proceed to Schedule Scoping
+                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
