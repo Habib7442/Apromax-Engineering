@@ -62,8 +62,9 @@ function CalContent() {
     // 2. Initialize and configure the inline embed
     const calLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
     const cal = (window as any).Cal;
+    const container = document.getElementById("my-cal-inline");
     
-    if (cal) {
+    if (cal && container && container.children.length === 0) {
       cal("init", { theme: "light" });
       
       cal("inline", {
@@ -87,6 +88,13 @@ function CalContent() {
         layout: "month_view"
       });
     }
+
+    // Cleanup container content on unmount to prevent stale/ignored re-initialization calls
+    return () => {
+      if (container) {
+        container.innerHTML = "";
+      }
+    };
   }, [name, email, notes]);
 
   return (
