@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Header from "@/components/marketing/header";
 import Footer from "@/components/marketing/footer";
 import { useSearchParams } from "next/navigation";
+import Script from "next/script";
 
 function BookingLoader() {
   return (
@@ -19,65 +20,31 @@ function BookingLoader() {
   );
 }
 
-function CalContent() {
+function CalContent({ scriptLoaded }: { scriptLoaded: boolean }) {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "";
   const email = searchParams.get("email") || "";
   const notes = searchParams.get("notes") || "";
 
   React.useEffect(() => {
-    // 1. Setup the queue and inject the script element dynamically
-    (function (C, A, L) {
-      const p = function (a: any, ar: any) { a.q.push(ar); };
-      const c = C.document;
-      C.Cal = C.Cal || function () {
-        const o = C.Cal;
-        if (!o.q) {
-          o.q = [];
-          const s = c.createElement("script");
-          s.src = A;
-          s.async = true;
-          const firstScript = c.getElementsByTagName("script")[0];
-          if (firstScript && firstScript.parentNode) {
-            firstScript.parentNode.insertBefore(s, firstScript);
-          } else {
-            c.head.appendChild(s);
-          }
-          o.init = function () {
-            const i = setInterval(function () {
-              if (typeof C.Cal.ns !== "undefined") {
-                clearInterval(i);
-              } else {
-                p(o, ["init"]);
-              }
-            }, 10);
-          };
-        }
-        const ar = arguments;
-        if (!ar) return;
-        p(o, ar);
-      };
-    })(window as any, "https://app.cal.com/embed/embed.js", "Cal");
-
-    // 2. Initialize and configure the inline embed
-    const calLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
     const cal = (window as any).Cal;
     const container = document.getElementById("my-cal-inline");
     
-    if (cal && container && container.children.length === 0) {
-      cal("init", { theme: "light" });
+    if (scriptLoaded && cal && container && container.children.length === 0) {
+      // 1. Initialize namespace with official origin parameter
+      cal("init", { origin: "https://cal.com" });
       
+      // 2. Build link with prefilled parameters to avoid embed.js config parsing bugs
+      const baseLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
+      const calLink = `${baseLink}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&notes=${encodeURIComponent(notes)}`;
+      
+      // 3. Render inline
       cal("inline", {
         elementOrSelector: "#my-cal-inline",
-        calLink: calLink,
-        config: {
-          name: name,
-          email: email,
-          notes: notes,
-          theme: "light"
-        }
+        calLink: calLink
       });
 
+      // 4. Style widget
       cal("ui", {
         styles: {
           branding: {
@@ -89,13 +56,13 @@ function CalContent() {
       });
     }
 
-    // Cleanup container content on unmount to prevent stale/ignored re-initialization calls
+    // Cleanup container content on unmount
     return () => {
       if (container) {
         container.innerHTML = "";
       }
     };
-  }, [name, email, notes]);
+  }, [scriptLoaded, name, email, notes]);
 
   return (
     <main className="flex-grow bg-[#fcfdff] py-12">
@@ -122,14 +89,30 @@ function CalContent() {
 }
 
 export default function BookPage() {
+  const [scriptLoaded, setScriptLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    // If the script is already loaded (e.g. on route change back to book page)
+    if (typeof window !== "undefined" && (window as any).Cal) {
+      setScriptLoaded(true);
+    }
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       {/* Spacer for fixed header */}
       <div className="h-[76px]" />
       
+      {/* Load Cal.com embed.js via Next.js optimized Script loader */}
+      <Script
+        src="https://app.cal.com/embed/embed.js"
+        strategy="afterInteractive"
+        onLoad={() => setScriptLoaded(true)}
+      />
+
       <Suspense fallback={<BookingLoader />}>
-        <CalContent />
+        <CalContent scriptLoaded={scriptLoaded} />
       </Suspense>
 
       <Footer />
