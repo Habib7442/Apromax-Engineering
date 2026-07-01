@@ -144,3 +144,12 @@
     @apply font-sans;
   }
 }
+
+@keyframes progress-loading {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.animate-progress-loading {
+  animation: progress-loading 3s linear forwards;
+}

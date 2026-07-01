@@ -20,32 +20,9 @@ export default function Hero() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
-    const serviceLabels: Record<string, string> = {
-      engineering: "Engineering (Mechanical/Electrical)",
-      design: "Design (CAD/3D Product)",
-      development: "Web and App Development",
-      analysis: "Analysis Services (CFD/FEA)",
-      other: "Specialized/Other Services"
-    };
-
-    const serviceLabel = serviceLabels[formData.service] || formData.service;
-    
-    const messageText = `Hello AproMax! I would like to request a consultation.
-
-*First Name:* ${formData.firstName}
-*Last Name:* ${formData.lastName}
-*Work Email:* ${formData.email}
-*Service of Interest:* ${serviceLabel}
-*Project Notes:* ${formData.message || "N/A"}`;
-
-    const encodedMessage = encodeURIComponent(messageText);
-    const whatsappUrl = `https://wa.me/919101362280?text=${encodedMessage}`;
-
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-      window.open(whatsappUrl, "_blank");
     }, 800);
   };
 
@@ -174,13 +151,32 @@ export default function Hero() {
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-[#0a5cf0]" />
 
               {submitted ? (
-                <div className="text-center py-12 animate-in fade-in duration-300">
-                  <div className="size-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 text-accent animate-bounce">
-                    <CheckCircle2 className="size-8" />
+                <div className="text-center py-10 flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  {/* Glowing Pulsing Checkmark Container */}
+                  <div className="relative size-20 mb-5 flex items-center justify-center">
+                    {/* Outer pulsing ring */}
+                    <div className="absolute inset-0 rounded-full bg-accent/20 animate-ping opacity-75" />
+                    {/* Inner glowing ring */}
+                    <div className="absolute inset-2 rounded-full bg-gradient-to-tr from-accent to-[#0a5cf0] opacity-25 blur-md" />
+                    {/* Core icon background */}
+                    <div className="relative size-14 rounded-full bg-gradient-to-tr from-accent to-[#0a5cf0] flex items-center justify-center text-white shadow-lg shadow-accent/25">
+                      <CheckCircle2 className="size-7 stroke-[2.5]" />
+                    </div>
                   </div>
-                  <h3 className="font-heading font-semibold text-xl mb-2 text-white">Request Received</h3>
-                  <p className="text-white/60 text-sm max-w-sm mx-auto leading-relaxed">
-                    Thank you. An AproMax engineering lead will review your project parameters and reach out within 1 business day under full confidentiality.
+
+                  {/* Scoped Badge */}
+                  <span className="text-[10px] font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-4">
+                    NDA Confidentiality Secured
+                  </span>
+
+                  {/* Header Title */}
+                  <h3 className="font-heading font-bold text-2xl text-white mb-2 tracking-tight">
+                    Request Received!
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-white/70 text-xs md:text-[13px] leading-relaxed max-w-xs mx-auto">
+                    Thank you. An AproMax engineering coordinator will review your parameters and reach out within 1 business day under full confidentiality.
                   </p>
                 </div>
               ) : (
