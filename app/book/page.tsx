@@ -26,16 +26,32 @@ function CalContent() {
   const notes = searchParams.get("notes") || "";
 
   React.useEffect(() => {
-    // Inject Cal.com script dynamic loader
+    // 1. Setup the queue and inject the script element dynamically
     (function (C, A, L) {
       const p = function (a: any, ar: any) { a.q.push(ar); };
+      const c = C.document;
       C.Cal = C.Cal || function () {
         const o = C.Cal;
         if (!o.q) {
           o.q = [];
-          C.addEventListener("DOMContentLoaded", function () {
-            C.Cal.init();
-          });
+          const s = c.createElement("script");
+          s.src = A;
+          s.async = true;
+          const firstScript = c.getElementsByTagName("script")[0];
+          if (firstScript && firstScript.parentNode) {
+            firstScript.parentNode.insertBefore(s, firstScript);
+          } else {
+            c.head.appendChild(s);
+          }
+          o.init = function () {
+            const i = setInterval(function () {
+              if (typeof C.Cal.ns !== "undefined") {
+                clearInterval(i);
+              } else {
+                p(o, ["init"]);
+              }
+            }, 10);
+          };
         }
         const ar = arguments;
         if (!ar) return;
@@ -43,14 +59,12 @@ function CalContent() {
       };
     })(window as any, "https://app.cal.com/embed/embed.js", "Cal");
 
-    // Initialize Cal.com and render inline
-    const calLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/consultation";
-    
+    // 2. Initialize and configure the inline embed
+    const calLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
     const cal = (window as any).Cal;
+    
     if (cal) {
-      cal("init", {
-        theme: "light"
-      });
+      cal("init", { theme: "light" });
       
       cal("inline", {
         elementOrSelector: "#my-cal-inline",

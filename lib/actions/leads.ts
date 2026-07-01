@@ -12,7 +12,7 @@ export async function createLeadAction(formData: {
   try {
     const supabase = await createClient();
     
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("leads")
       .insert([
         {
@@ -23,16 +23,14 @@ export async function createLeadAction(formData: {
           message: formData.message || null,
           status: "pending_booking"
         }
-      ])
-      .select()
-      .single();
+      ]);
 
     if (error) {
       console.error("Error creating lead in database:", error);
       return { success: false, error: error.message };
     }
 
-    return { success: true, lead: data };
+    return { success: true };
   } catch (err: any) {
     console.error("Server Action Exception:", err);
     return { success: false, error: err?.message || "An unexpected error occurred." };
