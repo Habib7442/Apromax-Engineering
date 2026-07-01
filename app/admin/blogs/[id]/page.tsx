@@ -4,7 +4,7 @@ import * as React from "react";
 import { useRouter, useParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Loader2, Save } from "lucide-react";
+import { ChevronLeft, Loader2, Save, Upload } from "lucide-react";
 import Link from "next/link";
 
 export default function EditBlogPage() {
@@ -21,6 +21,7 @@ export default function EditBlogPage() {
   const [status, setStatus] = React.useState("draft");
   const [fetching, setFetching] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
+  const [uploadingImage, setUploadingImage] = React.useState(false);
 
   React.useEffect(() => {
     if (!id) return;
@@ -53,6 +54,35 @@ export default function EditBlogPage() {
 
     fetchBlog();
   }, [id, supabase, router]);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setUploadingImage(true);
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `blog-covers/${fileName}`;
+
+      const { data, error: uploadError } = await supabase.storage
+        .from("assets")
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from("assets")
+        .getPublicUrl(filePath);
+
+      setCoverImage(publicUrl);
+    } catch (err: any) {
+      console.error("Error uploading image:", err);
+      alert(`Image upload failed: ${err.message || err}`);
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,18 +178,49 @@ export default function EditBlogPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="coverImage" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
-                Cover Image Path / URL
+              <label className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                Cover Image
               </label>
-              <input
-                type="text"
-                id="coverImage"
-                required
-                placeholder="/images/case_thermal.webp"
-                value={coverImage}
-                onChange={(e) => setCoverImage(e.target.value)}
-                className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-[#070b19] placeholder:text-slate-400 outline-none transition-all"
-              />
+              <div className="flex gap-4 items-center">
+                {coverImage && (
+                  <div className="relative size-12 rounded-lg overflow-hidden border border-slate-200 shrink-0 bg-slate-50">
+                    <img src={coverImage} alt="Cover Preview" className="w-full h-full object-cover" />
+                  </div>
+                )}
+                <div className="flex-grow flex gap-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    disabled={uploadingImage}
+                    className="hidden"
+                    id="blog-image-upload"
+                  />
+                  <label
+                    htmlFor="blog-image-upload"
+                    className="inline-flex items-center gap-1.5 px-3 h-10 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg cursor-pointer transition-colors shrink-0"
+                  >
+                    {uploadingImage ? (
+                      <>
+                        <Loader2 className="size-3.5 animate-spin" />
+                        Uploading...
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="size-3.5" />
+                        Upload
+                      </>
+                    )}
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Or cover image URL..."
+                    value={coverImage}
+                    onChange={(e) => setCoverImage(e.target.value)}
+                    className="flex-grow bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-3 py-2 text-xs text-[#070b19] placeholder:text-slate-400 outline-none transition-all"
+                  />
+                </div>
+              </div>
             </div>
 
             <div>
