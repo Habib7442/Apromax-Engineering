@@ -85,8 +85,12 @@ export default async function CaseStudiesPage() {
                     <div className="p-6 md:p-8">
                       <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
                         <span>{item.category}</span>
-                        <span>•</span>
-                        <span>{item.client}</span>
+                        {item.client && (
+                          <>
+                            <span>•</span>
+                            <span>{item.client}</span>
+                          </>
+                        )}
                       </div>
 
                       <h3 className="font-heading font-bold text-xl text-[#070b19] leading-snug mb-3 group-hover:text-primary transition-colors">

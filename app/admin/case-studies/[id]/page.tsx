@@ -96,7 +96,7 @@ export default function EditCaseStudyPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !slug || !client || !category || !challenge || !approach || !solution) {
+    if (!title || !slug || !category || !challenge || !approach || !solution) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -193,12 +193,11 @@ export default function EditCaseStudyPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="client" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
-                Client Name
+                Client Name (Optional)
               </label>
               <input
                 type="text"
                 id="client"
-                required
                 placeholder="Aerospace Enclosures Corp"
                 value={client}
                 onChange={(e) => setClient(e.target.value)}

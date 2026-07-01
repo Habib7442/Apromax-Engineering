@@ -66,8 +66,8 @@ export default function NewCaseStudyPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !slug || !client || !category || !challenge || !approach || !solution) {
-      alert("Please fill in all required fields (Title, Slug, Client, Category, Challenge, Approach, and Solution).");
+    if (!title || !slug || !category || !challenge || !approach || !solution) {
+      alert("Please fill in all required fields (Title, Slug, Category, Challenge, Approach, and Solution).");
       return;
     }
 
@@ -78,7 +78,7 @@ export default function NewCaseStudyPage() {
         {
           title,
           slug,
-          client,
+          client: client || null,
           metric,
           category,
           image,
@@ -153,12 +153,11 @@ export default function NewCaseStudyPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="client" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
-                Client Name
+                Client Name (Optional)
               </label>
               <input
                 type="text"
                 id="client"
-                required
                 placeholder="Aerospace Enclosures Corp"
                 value={client}
                 onChange={(e) => setClient(e.target.value)}

@@ -61,7 +61,7 @@ export default function CaseStudiesAdminPage() {
 
   const filteredCases = cases.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (item.client && item.client.toLowerCase().includes(searchQuery.toLowerCase())) ||
     item.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -131,7 +131,7 @@ export default function CaseStudiesAdminPage() {
                   </td>
                   
                   <td className="py-4 text-slate-600 font-medium">
-                    {item.client}
+                    {item.client || <span className="text-slate-400 italic">None</span>}
                   </td>
 
                   <td className="py-4 text-slate-500 font-medium whitespace-nowrap">

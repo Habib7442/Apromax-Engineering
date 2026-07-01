@@ -124,10 +124,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-4">
                 <h4 className="font-heading font-semibold text-[#070b19] text-xs uppercase tracking-wider">Project Profile</h4>
                 <div className="space-y-3 text-xs">
-                  <div className="flex justify-between py-1.5 border-b border-slate-100">
-                    <span className="text-slate-500">Client Partner</span>
-                    <span className="font-bold text-[#070b19]">{item.client}</span>
-                  </div>
+                  {item.client && (
+                    <div className="flex justify-between py-1.5 border-b border-slate-100">
+                      <span className="text-slate-500">Client Partner</span>
+                      <span className="font-bold text-[#070b19]">{item.client}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between py-1.5 border-b border-slate-100">
                     <span className="text-slate-500">Specialist Field</span>
                     <span className="font-bold text-[#070b19]">{item.category}</span>
