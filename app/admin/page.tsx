@@ -131,27 +131,37 @@ export default function AdminDashboard() {
         {cards.map((card) => {
           const Icon = card.icon;
           return (
-            <div key={card.title} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between h-40">
-              <div className="flex justify-between items-start">
+            <Link
+              key={card.title}
+              href={card.href}
+              className="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between h-44 cursor-pointer"
+            >
+              <div className="flex justify-between items-start gap-4">
                 <div>
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{card.title}</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    {card.title}
+                  </span>
                   {loading ? (
                     <div className="h-8 w-16 bg-slate-100 animate-pulse rounded-lg mt-1" />
                   ) : (
-                    <h3 className="font-heading font-bold text-3xl mt-1 text-[#070b19]">{card.value}</h3>
+                    <h3 className="font-heading font-extrabold text-3.5xl text-[#070b19] tracking-tight">
+                      {card.value}
+                    </h3>
                   )}
                 </div>
-                <div className={`size-10 rounded-xl border flex items-center justify-center ${card.color}`}>
+                <div className={`size-10 rounded-xl border flex items-center justify-center shrink-0 transition-colors group-hover:bg-blue-50/30 ${card.color}`}>
                   <Icon className="size-5" />
                 </div>
               </div>
-              <div className="flex justify-between items-center border-t border-slate-100 pt-3">
-                <span className="text-[11px] text-muted-foreground">{card.desc}</span>
-                <Link href={card.href} className="text-primary hover:underline text-[11px] font-bold flex items-center gap-0.5 cursor-pointer">
+              <div className="border-t border-slate-100 pt-4 flex items-center justify-between mt-auto">
+                <span className="text-[11px] text-muted-foreground leading-normal line-clamp-1 pr-2">
+                  {card.desc}
+                </span>
+                <span className="text-primary text-[11px] font-bold flex items-center gap-0.5 shrink-0 group-hover:translate-x-0.5 transition-transform duration-200">
                   Manage <ArrowRight className="size-3" />
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
