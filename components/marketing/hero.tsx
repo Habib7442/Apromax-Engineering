@@ -62,14 +62,18 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-65 absolute inset-0"
+          className="w-full h-full object-cover opacity-50 absolute inset-0"
         >
           <source src="/api/hero-video" type="video/mp4" />
           <source src="https://sdgenxchgjsoyoecoctv.supabase.co/storage/v1/object/public/assets/team-video.mp4" type="video/mp4" />
         </video>
         
-        {/* Dark overlay backdrop to maintain high text contrast */}
-        <div className="absolute inset-0 bg-[#070b19]/45" />
+        {/* Dim the video for premium dark look */}
+        <div className="absolute inset-0 bg-black/45" />
+        
+        {/* Netflix-style vertical and horizontal dark gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070b19] via-transparent to-[#070b19]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070b19] via-transparent to-transparent opacity-80" />
 
 
         
