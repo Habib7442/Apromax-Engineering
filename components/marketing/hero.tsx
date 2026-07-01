@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { createLeadAction } from "@/lib/actions/leads";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -19,7 +20,7 @@ export default function Hero() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -34,17 +35,21 @@ export default function Hero() {
     const serviceLabel = serviceLabels[formData.service] || formData.service;
     const notes = `Service: ${serviceLabel}\nNotes: ${formData.message || "N/A"}`;
 
+    // Persist lead details to Supabase database (RLS enabled, insert allowed for anon)
+    const result = await createLeadAction(formData);
+    if (!result.success) {
+      console.warn("Failed to persist lead in database:", result.error);
+    }
+
     const params = new URLSearchParams({
       name: fullName,
       email: formData.email,
       notes: notes
     });
 
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      router.push(`/book?${params.toString()}`);
-    }, 800);
+    setLoading(false);
+    setSubmitted(true);
+    router.push(`/book?${params.toString()}`);
   };
 
   return (
