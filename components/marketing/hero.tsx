@@ -121,18 +121,18 @@ export default function Hero() {
             </div>
             
             {/* Footer Trust Indicator */}
-            <div className="border-t border-white/10 pt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <div className="flex items-center gap-2">
+            <div className="border-t border-white/10 pt-6 flex flex-row items-center gap-6 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-2">
+              <div className="flex-shrink-0 flex items-center gap-2">
                 <span className="text-[22px] font-bold text-accent font-heading">250+</span>
                 <span className="text-xs text-white/50 leading-none">Projects<br />Delivered</span>
               </div>
-              <div className="h-6 w-px bg-white/10 hidden sm:block" />
-              <div className="flex items-center gap-2">
+              <div className="flex-shrink-0 h-6 w-px bg-white/10" />
+              <div className="flex-shrink-0 flex items-center gap-2">
                 <span className="text-[22px] font-bold text-accent font-heading">99.2%</span>
                 <span className="text-xs text-white/50 leading-none">On-Time<br />Milestones</span>
               </div>
-              <div className="h-6 w-px bg-white/10 hidden sm:block" />
-              <div className="flex items-center gap-2">
+              <div className="flex-shrink-0 h-6 w-px bg-white/10" />
+              <div className="flex-shrink-0 flex items-center gap-2">
                 <span className="text-[22px] font-bold text-accent font-heading">ISO 9001</span>
                 <span className="text-xs text-white/50 leading-none">Aligned<br />Quality Standards</span>
               </div>
