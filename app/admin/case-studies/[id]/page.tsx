@@ -109,7 +109,7 @@ export default function EditCaseStudyPage() {
         .update({
           title,
           slug,
-          client,
+          client: client || null,
           metric,
           category,
           image,
