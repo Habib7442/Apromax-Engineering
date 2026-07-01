@@ -5,7 +5,8 @@ import { Suspense } from "react";
 import Header from "@/components/marketing/header";
 import Footer from "@/components/marketing/footer";
 import { useSearchParams } from "next/navigation";
-import Script from "next/script";
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { updateLeadStatusAction } from "@/lib/actions/leads";
 
 function BookingLoader() {
   return (
@@ -27,53 +28,44 @@ function CalContent() {
   const notes = searchParams.get("notes") || "";
 
   React.useEffect(() => {
-    // 1. Setup the stub queue on window so the external script doesn't crash on execution
-    (window as any).Cal = (window as any).Cal || function () {
-      const o = (window as any).Cal;
-      if (!o.q) {
-        o.q = [];
+    (async function initCal() {
+      try {
+        const cal = await getCalApi({ namespace: "30min" });
+        if (cal) {
+          cal("ui", {
+            theme: "light",
+            styles: {
+              branding: {
+                brandColor: "#0046be"
+              }
+            },
+            hideEventTypeDetails: false,
+            layout: "month_view"
+          });
+
+          // Listen for successful booking event from the iframe
+          cal("on", {
+            action: "bookingSuccessful",
+            callback: async (e: any) => {
+              console.log("Cal.com -> Booking successful event received:", e?.detail);
+              if (email) {
+                const result = await updateLeadStatusAction(email, "booked");
+                if (result.success) {
+                  console.log("Cal.com -> Lead status updated to 'booked' in Supabase!");
+                } else {
+                  console.error("Cal.com -> Failed to update lead status:", result.error);
+                }
+              }
+            }
+          });
+        }
+      } catch (err) {
+        console.error("Cal.com initialization error caught:", err);
       }
-      const ar = arguments;
-      if (!ar) return;
-      o.q.push(ar);
-    };
+    })();
+  }, [email]);
 
-    const cal = (window as any).Cal;
-    const container = document.getElementById("my-cal-inline");
-    
-    if (cal && container && container.children.length === 0) {
-      // 2. Initialize namespace with official origin parameter
-      cal("init", { origin: "https://cal.com" });
-      
-      // 3. Build link with prefilled parameters to avoid embed.js config parsing bugs
-      const baseLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
-      const calLink = `${baseLink}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&notes=${encodeURIComponent(notes)}`;
-      
-      // 4. Render inline
-      cal("inline", {
-        elementOrSelector: "#my-cal-inline",
-        calLink: calLink
-      });
-
-      // 5. Style widget
-      cal("ui", {
-        styles: {
-          branding: {
-            brandColor: "#0046be"
-          }
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view"
-      });
-    }
-
-    // Cleanup container content on unmount
-    return () => {
-      if (container) {
-        container.innerHTML = "";
-      }
-    };
-  }, [name, email, notes]);
+  const baseLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
 
   return (
     <main className="flex-grow bg-[#fcfdff] py-12">
@@ -90,9 +82,19 @@ function CalContent() {
           </p>
         </div>
 
-        {/* Cal.com inline element container */}
+        {/* Cal.com React component container */}
         <div className="w-full bg-white border border-slate-200 rounded-2xl p-2 md:p-6 shadow-sm min-h-[650px] relative overflow-hidden">
-          <div id="my-cal-inline" className="w-full h-full min-h-[600px]" />
+          <Cal
+            namespace="30min"
+            calLink={baseLink}
+            style={{ width: "100%", height: "100%", minHeight: "600px", border: "0" }}
+            config={{
+              name: name,
+              email: email,
+              notes: notes,
+              layout: "month_view"
+            }}
+          />
         </div>
       </div>
     </main>
@@ -106,12 +108,6 @@ export default function BookPage() {
       {/* Spacer for fixed header */}
       <div className="h-[76px]" />
       
-      {/* Load Cal.com embed.js via Next.js optimized Script loader */}
-      <Script
-        src="https://app.cal.com/embed/embed.js"
-        strategy="afterInteractive"
-      />
-
       <Suspense fallback={<BookingLoader />}>
         <CalContent />
       </Suspense>

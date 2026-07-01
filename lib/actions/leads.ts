@@ -36,3 +36,25 @@ export async function createLeadAction(formData: {
     return { success: false, error: err?.message || "An unexpected error occurred." };
   }
 }
+
+export async function updateLeadStatusAction(email: string, status: string) {
+  try {
+    const supabase = await createClient();
+    
+    const { error } = await supabase
+      .from("leads")
+      .update({ status: status })
+      .eq("email", email)
+      .eq("status", "pending_booking");
+
+    if (error) {
+      console.error("Error updating lead status in database:", error);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true };
+  } catch (err: any) {
+    console.error("Server Action updateLeadStatusAction Exception:", err);
+    return { success: false, error: err?.message || "An unexpected error occurred." };
+  }
+}
