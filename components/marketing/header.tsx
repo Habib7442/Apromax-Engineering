@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -49,9 +50,13 @@ const servicePillars = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [megaOpen, setMegaOpen] = React.useState(false);
+
+  const isHome = pathname === "/";
+  const shouldBeSolid = scrolled || isOpen || !isHome;
 
   React.useEffect(() => {
     let active = false;
@@ -83,7 +88,7 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 z-50 w-full transition-[background-color,padding,border-color,box-shadow] duration-300 border-b",
-        scrolled || isOpen
+        shouldBeSolid
           ? "bg-white py-3 shadow-sm border-border"
           : "bg-transparent py-5 border-transparent"
       )}
@@ -99,7 +104,7 @@ export default function Header() {
             style={{ width: "auto", height: "auto" }}
             className={cn(
               "h-8 w-auto transition-transform group-hover:scale-[1.02]",
-              (!scrolled && !isOpen) && "brightness-0 invert"
+              !shouldBeSolid && "brightness-0 invert"
             )}
             priority
           />
@@ -119,7 +124,7 @@ export default function Header() {
                   onClick={() => setMegaOpen(!megaOpen)}
                   className={cn(
                     "flex items-center gap-1 text-sm font-medium transition-colors py-2 cursor-pointer",
-                    scrolled
+                    shouldBeSolid
                       ? "text-foreground/80 hover:text-primary"
                       : "text-white/80 hover:text-white"
                   )}
@@ -132,7 +137,7 @@ export default function Header() {
                   href={link.href}
                   className={cn(
                     "text-sm font-medium transition-colors py-2",
-                    scrolled
+                    shouldBeSolid
                       ? "text-foreground/80 hover:text-primary"
                       : "text-white/80 hover:text-white"
                   )}
@@ -200,7 +205,7 @@ export default function Header() {
           onClick={() => setIsOpen(!isOpen)}
           className={cn(
             "lg:hidden p-1 cursor-pointer transition-colors",
-            scrolled || isOpen
+            shouldBeSolid
               ? "text-foreground hover:text-primary"
               : "text-white hover:text-white/80"
           )}
