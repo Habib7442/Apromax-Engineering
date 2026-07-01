@@ -31,6 +31,12 @@
 - **Services Pillar & Dynamic Routes:** Built the Services page (`app/services/page.tsx`) and the dynamic detail page template (`app/services/[slug]/page.tsx`) as Next.js Server Components. Integrated balanced 2-column grids for all service capabilities with zero vertical whitespace.
 - **Google Search Console Setup:** Created dynamic sitemap (`sitemap.ts`) and crawling crawler constraints (`robots.ts`) serving custom Search Console feeds.
 - **Button Cursor & LCP Preloading:** Added `cursor-pointer` to global button variants (`button.tsx`) and added `priority` preloading to the primary homepage LCP card image (`case_thermal.webp`).
+- **Authenticated Admin Panel & Dynamic CMS:** Created the admin panel at `/admin` featuring:
+  - Auth login (`/admin/login`) and secure routing via Next.js 16's `proxy.ts` rules.
+  - Interactive datatables with inline editing/deleting for inbound leads (`/admin/leads`) and candidates (`/admin/applications`).
+  - Blogs and Case Studies listing, authoring, and modifying interfaces (`/admin/blogs`, `/admin/case-studies`).
+- **Dynamic Public Feeds:** Connected `/blog` and `/case-studies` along with their dynamic nested `[slug]` pages to query directly from the Supabase `blogs` and `case_studies` tables.
+
 
 ## In Progress
 
