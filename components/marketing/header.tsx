@@ -54,14 +54,17 @@ export default function Header() {
   const [megaOpen, setMegaOpen] = React.useState(false);
 
   React.useEffect(() => {
+    let active = false;
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== active) {
+        active = isScrolled;
+        setScrolled(isScrolled);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initial check
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -79,9 +82,9 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300 border-b",
-        scrolled
-          ? "bg-white/95 backdrop-blur-md py-3 shadow-sm border-border"
+        "fixed top-0 left-0 z-50 w-full transition-[background-color,padding,border-color,box-shadow] duration-300 border-b",
+        scrolled || isOpen
+          ? "bg-white py-3 shadow-sm border-border"
           : "bg-transparent py-5 border-transparent"
       )}
     >
@@ -93,8 +96,11 @@ export default function Header() {
             alt="AproMax Engineering"
             width={120}
             height={32}
-            style={{ width: "auto" }}
-            className="h-8 w-auto transition-transform group-hover:scale-[1.02]"
+            style={{ width: "auto", height: "auto" }}
+            className={cn(
+              "h-8 w-auto transition-transform group-hover:scale-[1.02]",
+              (!scrolled && !isOpen) && "brightness-0 invert"
+            )}
             priority
           />
         </Link>
@@ -111,7 +117,12 @@ export default function Header() {
               {link.hasMegaMenu ? (
                 <button
                   onClick={() => setMegaOpen(!megaOpen)}
-                  className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2 cursor-pointer"
+                  className={cn(
+                    "flex items-center gap-1 text-sm font-medium transition-colors py-2 cursor-pointer",
+                    scrolled
+                      ? "text-foreground/80 hover:text-primary"
+                      : "text-white/80 hover:text-white"
+                  )}
                 >
                   {link.name}
                   <ChevronDown className={cn("size-3.5 transition-transform duration-200", megaOpen && "rotate-180")} />
@@ -119,7 +130,12 @@ export default function Header() {
               ) : (
                 <Link
                   href={link.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                  className={cn(
+                    "text-sm font-medium transition-colors py-2",
+                    scrolled
+                      ? "text-foreground/80 hover:text-primary"
+                      : "text-white/80 hover:text-white"
+                  )}
                 >
                   {link.name}
                 </Link>
@@ -182,7 +198,12 @@ export default function Header() {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden text-foreground hover:text-primary p-1 cursor-pointer"
+          className={cn(
+            "lg:hidden p-1 cursor-pointer transition-colors",
+            scrolled || isOpen
+              ? "text-foreground hover:text-primary"
+              : "text-white hover:text-white/80"
+          )}
           aria-label="Toggle menu"
         >
           {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}

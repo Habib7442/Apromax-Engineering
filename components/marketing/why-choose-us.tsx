@@ -103,6 +103,7 @@ export default function WhyChooseUs() {
               src="/images/about_engineers.png"
               alt="Engineers collaborating on machinery"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
@@ -127,6 +128,7 @@ export default function WhyChooseUs() {
               src="/images/case_thermal.png"
               alt="CAD thermal simulation rendering"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />

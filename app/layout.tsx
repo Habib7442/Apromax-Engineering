@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { defaultMetadata } from "@/lib/seo";
+import SmoothScrollProvider from "@/components/providers/smooth-scroll-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +27,9 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", sora.variable, inter.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">{children}</body>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }

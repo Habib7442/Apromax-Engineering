@@ -28,16 +28,24 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-[#070b19] py-16 lg:py-24 border-b border-white/5">
-      {/* 1. Animated Glowing Mesh Gradients */}
+      {/* 1. Background Video & Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Technical Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.08]" 
-          style={{
-            backgroundImage: `radial-gradient(circle, #ffffff 1.2px, transparent 1.2px)`,
-            backgroundSize: "24px 24px"
-          }}
-        />
+        {/* Loop video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-65 absolute inset-0"
+        >
+          <source src="/api/hero-video" type="video/mp4" />
+          <source src="https://sdgenxchgjsoyoecoctv.supabase.co/storage/v1/object/public/assets/team-video.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark overlay backdrop to maintain high text contrast */}
+        <div className="absolute inset-0 bg-[#070b19]/45" />
+
+
         
         {/* Glow 1: Indigo */}
         <motion.div
@@ -82,19 +90,18 @@ export default function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3b82f6] uppercase tracking-widest mb-6"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFF5E0] bg-[#FFF5E0]/10 border border-[#FFF5E0]/20 px-3 py-1 rounded-full uppercase tracking-widest mb-6 w-fit"
             >
-              <span className="size-2 rounded-full bg-[#3b82f6] animate-ping" />
               Engineering Services
             </motion.span>
             
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl md:text-6xl text-white tracking-tight leading-[1.05] mb-6">
-              Creative & Professional
+            <h1 className="font-heading font-bold text-4xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+              <span className="text-[#FFF5E0]">Creative</span> <span className="text-white">&</span> <span className="text-[#06b6d4]">Professional</span>
             </h1>
             
             {/* Brief description */}
-            <p className="text-white/70 text-base md:text-lg leading-relaxed max-w-lg mb-8">
+            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-lg mb-8">
               AproMax Engineering is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
             
@@ -107,7 +114,7 @@ export default function Hero() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button variant="outline" className="w-full sm:w-auto h-12 border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20 font-semibold rounded-lg px-6 transition-all">
+                <Button className="w-full sm:w-auto h-12 border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-white hover:border-white/20 font-semibold rounded-lg px-6 transition-all cursor-pointer">
                   About AproMax
                 </Button>
               </Link>

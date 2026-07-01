@@ -1,0 +1,9 @@
+{
+  "name": "AproMax Engineering",
+  "short_name": "AproMax",
+  "icons": [],
+  "theme_color": "#070b19",
+  "background_color": "#070b19",
+  "display": "standalone",
+  "start_url": "/"
+}

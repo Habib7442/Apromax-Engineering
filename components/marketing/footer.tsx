@@ -19,7 +19,7 @@ export default function Footer() {
                 alt="AproMax Engineering"
                 width={120}
                 height={32}
-                style={{ width: "auto" }}
+                style={{ width: "auto", height: "auto" }}
                 className="h-8 w-auto brightness-0 invert"
                 priority
               />

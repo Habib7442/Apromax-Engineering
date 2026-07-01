@@ -79,6 +79,7 @@ export default function FeaturedCases() {
                     src={project.image}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 30vw"
                     className="object-cover absolute inset-0 transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Dark overlay */}
