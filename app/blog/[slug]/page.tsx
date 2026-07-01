@@ -107,8 +107,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Article Content */}
-          <article className="prose prose-slate max-w-none text-[#070b19] text-xs md:text-sm leading-relaxed whitespace-pre-wrap space-y-6">
-            {post.content}
+          <article className="prose prose-slate max-w-none text-[#070b19]">
+            {parseMarkdown(post.content)}
           </article>
 
         </div>
@@ -118,3 +118,83 @@ export default async function BlogPostPage({ params }: PageProps) {
     </div>
   );
 }
+
+function parseMarkdown(content: string): React.ReactNode[] {
+  const lines = content.split("\n");
+  const parsedElements: React.ReactNode[] = [];
+
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+
+    // Headers
+    if (trimmed.startsWith("### ")) {
+      parsedElements.push(
+        <h3 key={index} className="font-heading font-bold text-lg md:text-xl text-[#070b19] mt-6 mb-3">
+          {trimmed.slice(4)}
+        </h3>
+      );
+    } else if (trimmed.startsWith("## ")) {
+      parsedElements.push(
+        <h2 key={index} className="font-heading font-bold text-xl md:text-2xl text-[#070b19] mt-8 mb-4">
+          {trimmed.slice(3)}
+        </h2>
+      );
+    } else if (trimmed.startsWith("# ")) {
+      parsedElements.push(
+        <h1 key={index} className="font-heading font-bold text-2xl md:text-3xl text-[#070b19] mt-10 mb-6">
+          {trimmed.slice(2)}
+        </h1>
+      );
+    }
+    // Bullet lists
+    else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+      const itemText = trimmed.slice(2);
+      parsedElements.push(
+        <li key={index} className="list-disc list-inside ml-4 mb-2 text-slate-700 text-xs md:text-sm leading-relaxed">
+          {parseInlineMarkdown(itemText)}
+        </li>
+      );
+    }
+    // Dividers
+    else if (trimmed === "---") {
+      parsedElements.push(<hr key={index} className="my-8 border-slate-200" />);
+    }
+    // Empty line
+    else if (!trimmed) {
+      // ignore
+    }
+    // Paragraph
+    else {
+      parsedElements.push(
+        <p key={index} className="text-slate-700 text-xs md:text-sm leading-relaxed mb-4">
+          {parseInlineMarkdown(trimmed)}
+        </p>
+      );
+    }
+  });
+
+  return parsedElements;
+}
+
+function parseInlineMarkdown(text: string): React.ReactNode {
+  // Split using regex for **bold** and `code`
+  const parts = text.split(/(\*\*.*?\*\*|`.*?`)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-extrabold text-[#070b19]">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code key={i} className="bg-slate-100 text-red-600 px-1.5 py-0.5 rounded font-mono text-xs">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return part;
+  });
+}
+
