@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle2, Globe2, Compass, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const stats = [
   {
@@ -30,7 +30,7 @@ const stats = [
   }
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -40,7 +40,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
   show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 100 } }
 };
