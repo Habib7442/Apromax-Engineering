@@ -20,31 +20,42 @@ function BookingLoader() {
   );
 }
 
-function CalContent({ scriptLoaded }: { scriptLoaded: boolean }) {
+function CalContent() {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "";
   const email = searchParams.get("email") || "";
   const notes = searchParams.get("notes") || "";
 
   React.useEffect(() => {
+    // 1. Setup the stub queue on window so the external script doesn't crash on execution
+    (window as any).Cal = (window as any).Cal || function () {
+      const o = (window as any).Cal;
+      if (!o.q) {
+        o.q = [];
+      }
+      const ar = arguments;
+      if (!ar) return;
+      o.q.push(ar);
+    };
+
     const cal = (window as any).Cal;
     const container = document.getElementById("my-cal-inline");
     
-    if (scriptLoaded && cal && container && container.children.length === 0) {
-      // 1. Initialize namespace with official origin parameter
+    if (cal && container && container.children.length === 0) {
+      // 2. Initialize namespace with official origin parameter
       cal("init", { origin: "https://cal.com" });
       
-      // 2. Build link with prefilled parameters to avoid embed.js config parsing bugs
+      // 3. Build link with prefilled parameters to avoid embed.js config parsing bugs
       const baseLink = process.env.NEXT_PUBLIC_CAL_LINK || "apromax-engineering/30min";
       const calLink = `${baseLink}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&notes=${encodeURIComponent(notes)}`;
       
-      // 3. Render inline
+      // 4. Render inline
       cal("inline", {
         elementOrSelector: "#my-cal-inline",
         calLink: calLink
       });
 
-      // 4. Style widget
+      // 5. Style widget
       cal("ui", {
         styles: {
           branding: {
@@ -62,7 +73,7 @@ function CalContent({ scriptLoaded }: { scriptLoaded: boolean }) {
         container.innerHTML = "";
       }
     };
-  }, [scriptLoaded, name, email, notes]);
+  }, [name, email, notes]);
 
   return (
     <main className="flex-grow bg-[#fcfdff] py-12">
@@ -89,15 +100,6 @@ function CalContent({ scriptLoaded }: { scriptLoaded: boolean }) {
 }
 
 export default function BookPage() {
-  const [scriptLoaded, setScriptLoaded] = React.useState(false);
-
-  React.useEffect(() => {
-    // If the script is already loaded (e.g. on route change back to book page)
-    if (typeof window !== "undefined" && (window as any).Cal) {
-      setScriptLoaded(true);
-    }
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -108,11 +110,10 @@ export default function BookPage() {
       <Script
         src="https://app.cal.com/embed/embed.js"
         strategy="afterInteractive"
-        onLoad={() => setScriptLoaded(true)}
       />
 
       <Suspense fallback={<BookingLoader />}>
-        <CalContent scriptLoaded={scriptLoaded} />
+        <CalContent />
       </Suspense>
 
       <Footer />
