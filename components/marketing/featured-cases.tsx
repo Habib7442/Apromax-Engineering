@@ -1,19 +1,32 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 
-const featuredProjects = [
+interface FeaturedProject {
+  title: string;
+  client: string;
+  metric: string;
+  category: string;
+  image: string;
+  desc: string;
+  slug?: string;
+}
+
+const defaultFeatured: FeaturedProject[] = [
   {
     title: "Structural Thermal Optimization",
     client: "Aerospace Enclosures Corp",
     metric: "35% Heat Dissipation Imp.",
     category: "FEA & CFD Simulation",
     image: "/images/case_thermal.webp",
-    desc: "Redesigning internal structural ducts and heat sink fins using ANSYS Fluent to eliminate localized hotspots in extreme environmental modules."
+    desc: "Redesigning internal structural ducts and heat sink fins using ANSYS Fluent to eliminate localized hotspots in extreme environmental modules.",
+    slug: "structural-thermal-optimization"
   },
   {
     title: "Zenith Industrial Plant Assembly",
@@ -21,11 +34,46 @@ const featuredProjects = [
     metric: "450+ SolidWorks Model Nodes",
     category: "Plant & Mechanical Eng.",
     image: "/images/case_plant.webp",
-    desc: "Developing full structural blueprint drafting, pipeline route models, and valve configurations for a modular gas processing plant in Texas."
+    desc: "Developing full structural blueprint drafting, pipeline route models, and valve configurations for a modular gas processing plant in Texas.",
+    slug: "zenith-industrial-plant-assembly"
   }
 ];
 
 export default function FeaturedCases() {
+  const [projects, setProjects] = React.useState<FeaturedProject[]>(defaultFeatured);
+  const supabase = createClient();
+
+  React.useEffect(() => {
+    const fetchCases = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("case_studies")
+          .select("title, client, metric, category, image, desc, slug")
+          .eq("status", "published")
+          .order("created_at", { ascending: false })
+          .limit(2);
+
+        if (error) throw error;
+        if (data && data.length > 0) {
+          const mapped = data.map((item) => ({
+            title: item.title,
+            client: item.client || "Undisclosed Client",
+            metric: item.metric || "Verified Outcome",
+            category: item.category,
+            image: item.image || "/images/case_thermal.webp",
+            desc: item.desc || "",
+            slug: item.slug
+          }));
+          setProjects(mapped);
+        }
+      } catch (err) {
+        console.error("Error loading featured case studies from database:", err);
+      }
+    };
+
+    fetchCases();
+  }, [supabase]);
+
   return (
     <section className="bg-background py-20 lg:py-28 border-b border-border relative overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
@@ -63,7 +111,7 @@ export default function FeaturedCases() {
 
           {/* Right panel: Project cards in an asymmetrical layout - Slides from Right */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            {featuredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div 
                 key={project.title}
                 initial={{ opacity: 0, x: 45 }}
@@ -118,7 +166,7 @@ export default function FeaturedCases() {
 
                   <div className="border-t border-border pt-4 mt-6 flex justify-end">
                     <Link 
-                      href="/case-studies"
+                      href={project.slug ? `/case-studies/${project.slug}` : "/case-studies"}
                       className="text-xs font-semibold text-primary hover:text-primary/80 flex items-center gap-1 group/link cursor-pointer"
                     >
                       Read Case Study <ArrowUpRight className="size-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
