@@ -59,6 +59,9 @@ const faqs: FAQItem[] = [
             ))}
           </div>
         </div>
+        <p className="pt-2 text-xs md:text-sm text-slate-500 italic">
+          Each service is tailored to meet our clients&apos; specific needs and industry standards.
+        </p>
       </div>
     )
   },
