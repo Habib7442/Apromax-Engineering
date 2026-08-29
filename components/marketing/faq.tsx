@@ -103,12 +103,8 @@ const faqs: FAQItem[] = [
             <span><strong>Monday to Friday:</strong> 9:00 AM - 6:00 PM IST</span>
           </li>
           <li className="flex items-center gap-2">
-            <span className="size-1.5 rounded-full bg-[#0a5cf0]" />
-            <span><strong>Saturday:</strong> 9:00 AM - 1:00 PM IST</span>
-          </li>
-          <li className="flex items-center gap-2">
             <span className="size-1.5 rounded-full bg-slate-400" />
-            <span><strong>Sunday:</strong> Closed</span>
+            <span><strong>Saturday &amp; Sunday:</strong> Closed</span>
           </li>
         </ul>
         <p className="text-xs md:text-sm text-slate-500">
