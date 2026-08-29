@@ -182,16 +182,13 @@ export default function ServicesGrid() {
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-16">
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-bold text-primary uppercase tracking-widest mb-3">
             Core Disciplines
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-5xl text-foreground tracking-tight mb-4">
-            Our 6 Service Pillars
+          <h2 className="font-heading font-bold text-3xl md:text-5xl text-foreground tracking-tight">
+            Our Services
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-            Delivering cross-disciplinary expertise from micro-electronics coding to industrial-scale structural fluid simulations.
-          </p>
         </div>
 
         {/* Services Grid with Animation */}
