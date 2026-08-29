@@ -66,6 +66,45 @@ const faqs: FAQItem[] = [
     )
   },
   {
+    id: "industries-served",
+    question: "What industries do you serve?",
+    answer: (
+      <div className="space-y-3 text-slate-600 text-sm md:text-base leading-relaxed">
+        <p>AproMax provides engineering and design support across:</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 pt-1 pl-2">
+          <div className="space-y-2.5">
+            {[
+              "Industrial & Manufacturing",
+              "Oil & Gas",
+              "Chemical & Process",
+              "Water & Wastewater",
+              "Data Centers"
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-800">
+                <span className="size-1.5 rounded-full bg-[#0a5cf0] shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-2.5">
+            {[
+              "Power & Energy",
+              "EPC & Engineering",
+              "OEM & Equipment Manufacturing",
+              "Automotive & EV",
+              "Electronics & Technology"
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-800">
+                <span className="size-1.5 rounded-full bg-[#0a5cf0] shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  },
+  {
     id: "contact-info",
     question: "How can I contact AproMax Engineering LLP?",
     answer: (
