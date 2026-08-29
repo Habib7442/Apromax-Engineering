@@ -81,7 +81,8 @@ export default function ContactPage() {
               Have an engineering project in mind?
             </h1>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-none">
-              Share your requirements and our engineering team will review your project and connect with you to discuss the scope, deliverables and next steps.
+              <span className="block sm:inline-block">Share your requirements with our team. We will review your project and</span>{" "}
+              <span className="block sm:inline-block">connect with you to discuss the scope, deliverables and next steps.</span>
             </p>
           </div>
 
