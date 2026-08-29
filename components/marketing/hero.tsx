@@ -45,6 +45,12 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-center text-center"
           >
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-semibold tracking-wider text-white mb-6 shadow-sm">
+              <span className="size-2 rounded-full bg-[#06b6d4] animate-pulse" />
+              <span>Approach. Maximize. Optimize.</span>
+            </div>
+
             {/* Headline */}
             <h1 className="font-heading font-bold tracking-tight leading-[1.1] mb-4 lg:mb-6 text-center">
               <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#2563eb] mb-2">Engineering Services</span>
