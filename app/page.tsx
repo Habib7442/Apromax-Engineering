@@ -1,6 +1,5 @@
 import Header from "@/components/marketing/header";
 import Hero from "@/components/marketing/hero";
-import TrustBar from "@/components/marketing/trust-bar";
 import Stats from "@/components/marketing/stats";
 import ServicesGrid from "@/components/marketing/services-grid";
 import WhyChooseUs from "@/components/marketing/why-choose-us";
@@ -21,9 +20,6 @@ export default function Home() {
       <main className="flex-grow">
         {/* Split screen landing Hero */}
         <Hero />
-
-        {/* Grayscale tool sets bar */}
-        <TrustBar />
 
         {/* Services grid displaying 6 pillars */}
         <ServicesGrid />
