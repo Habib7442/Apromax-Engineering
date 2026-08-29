@@ -17,7 +17,7 @@ const faqs: FAQItem[] = [
     question: "Who is AproMax Engineering LLP?",
     answer: (
       <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-        AproMax Engineering LLP is a multidisciplinary engineering and technology services company delivering <strong className="font-bold text-slate-900">mechanical, electrical, electronics, automation, PCB, embedded, CAD and software engineering solutions</strong> to clients in the USA and across global markets. We provide reliable, innovative and cost-effective engineering solutions from concept through detailed design and development.
+        AproMax Engineering LLP is a multidisciplinary engineering and technology services company delivering mechanical, electrical, electronics, automation, PCB, embedded, CAD and software engineering solutions to clients in the USA and across global markets. We provide reliable, innovative and cost-effective engineering solutions from concept through detailed design and development.
       </p>
     )
   },
