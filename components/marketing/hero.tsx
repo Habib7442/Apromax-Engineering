@@ -28,10 +28,10 @@ export default function Hero() {
         >
           <source src="/hero_video.mp4" type="video/mp4" />
         </video>
-        
+
         {/* Subtle dim layer for contrast while keeping Earth video bright & vibrant */}
         <div className="absolute inset-0 bg-black/20" />
-        
+
         {/* Soft top & bottom gradient transition */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#070b19]/80" />
       </div>
@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-12 relative z-10 py-12">
         <div className="flex flex-col items-center text-center text-white max-w-4xl mx-auto">
           {/* Content Block */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -50,21 +50,21 @@ export default function Hero() {
               <span className="block text-[#06b6d4] mb-1">Engineering Services</span>
               <span className="block text-white">Creative &amp; Professional</span>
             </h1>
-            
+
             {/* Brief description */}
             <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-2xl mb-8 text-center">
               <strong className="font-bold text-white">AproMax Engineering</strong> is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
-            
+
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/services">
-                <Button className="w-full sm:w-auto h-12 bg-[#06b6d4] hover:bg-[#06b6d4]/90 text-black font-bold rounded-lg px-6 shadow-md hover:shadow-lg transition-all group cursor-pointer border-0">
+                <Button className="w-full sm:w-auto h-12 bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-semibold rounded-lg px-6 shadow-md hover:shadow-lg transition-all group cursor-pointer border-0">
                   Explore Services
                   <ArrowRight className="size-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </Link>
-              <Button 
+              <Button
                 onClick={scrollToForm}
                 className="w-full sm:w-auto h-12 border border-white/15 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/30 font-semibold rounded-lg px-6 transition-all cursor-pointer"
               >
