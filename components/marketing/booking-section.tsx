@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CheckCircle2, ShieldCheck, Clock, Calendar } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { createLeadAction } from "@/lib/actions/leads";
@@ -59,7 +59,7 @@ export default function BookingSection() {
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Side: Copywriting & Features */}
+          {/* Left Side: Copywriting */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -77,38 +77,6 @@ export default function BookingSection() {
             <p className="text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
               Book a confidential technical consultation with our engineering directors. We analyze your CAD/FEA tolerances, solver constraints, and deliverables.
             </p>
-
-            <div className="space-y-4 pt-2">
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-accent shrink-0 mt-0.5">
-                  <ShieldCheck className="size-5" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-bold text-sm text-white">100% Mutual NDA Covered</h4>
-                  <p className="text-xs text-white/60">Your proprietary CAD models, specs, and intellectual property remain strictly confidential.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-accent shrink-0 mt-0.5">
-                  <Clock className="size-5" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-bold text-sm text-white">24-Hour Scoping Turnaround</h4>
-                  <p className="text-xs text-white/60">Receive a detailed proposal with milestones, solver allocations, and flat-rate quote.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-accent shrink-0 mt-0.5">
-                  <Calendar className="size-5" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-bold text-sm text-white">Direct Calendar Integration</h4>
-                  <p className="text-xs text-white/60">Submit your notes and immediately choose your preferred video call time slot.</p>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Side: The Form */}
