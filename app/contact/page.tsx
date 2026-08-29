@@ -78,14 +78,14 @@ export default function ContactPage() {
               Contact Us
             </span>
             <h1 className="font-heading font-bold text-3xl md:text-5xl text-[#070b19] tracking-tight mb-4">
-              Let's Discuss Your Engineering Requirements
+              Have an engineering project in mind?
             </h1>
-            <div className="space-y-4 text-muted-foreground text-base md:text-lg leading-relaxed">
+            <div className="space-y-3 text-muted-foreground text-base md:text-lg leading-relaxed">
               <p>
-                Have an engineering project in mind? AproMax Engineering provides multidisciplinary engineering and technology solutions for clients across the USA and global markets.
+                AproMax Engineering delivers multidisciplinary engineering and technology solutions to clients across the USA and global markets.
               </p>
               <p>
-                Share your requirements with us, and our engineering team will review your project and connect with you to discuss the scope, deliverables, timeline and next steps.
+                Share your requirements and our engineering team will review your project and connect with you to discuss the scope, deliverables and next steps.
               </p>
             </div>
           </div>
