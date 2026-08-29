@@ -74,14 +74,9 @@ export default function BookingSection() {
               Have an engineering <br className="hidden md:inline" />
               <span className="text-accent">project in mind?</span>
             </h2>
-            <div className="space-y-3 text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
-              <p>
-                AproMax Engineering delivers multidisciplinary engineering and technology solutions to clients across the USA and global markets.
-              </p>
-              <p>
-                Share your requirements and our engineering team will review your project and connect with you to discuss the scope, deliverables and next steps.
-              </p>
-            </div>
+            <p className="text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
+              Share your requirements and our engineering team will review your project and connect with you to discuss the scope, deliverables and next steps.
+            </p>
           </motion.div>
 
           {/* Right Side: The Form */}

@@ -80,14 +80,9 @@ export default function ContactPage() {
             <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-[#070b19] tracking-tight mb-4 lg:whitespace-nowrap">
               Have an engineering project in mind?
             </h1>
-            <div className="space-y-3 text-muted-foreground text-base md:text-lg leading-relaxed max-w-none">
-              <p>
-                AproMax Engineering delivers multidisciplinary engineering and technology solutions to clients across the USA and global markets.
-              </p>
-              <p>
-                Share your requirements and our engineering team will review your project and connect with you to discuss the scope, deliverables and next steps.
-              </p>
-            </div>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-none">
+              Share your requirements and our engineering team will review your project and connect with you to discuss the scope, deliverables and next steps.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
