@@ -199,7 +199,7 @@ export default function BookingSection() {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full h-11 mt-1 bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-bold rounded-lg text-xs shadow-md transition-all cursor-pointer border-0"
+                    className="w-full h-11 mt-1 bg-[#06b6d4] hover:bg-[#06b6d4]/90 text-white font-bold rounded-lg text-xs shadow-md transition-all cursor-pointer border-0"
                   >
                     {loading ? "Processing..." : "Get a Free Consultation"}
                   </Button>
