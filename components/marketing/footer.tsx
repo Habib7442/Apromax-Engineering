@@ -47,7 +47,7 @@ export default function Footer() {
                     src={`/social-icons/${social.name}.webp`}
                     alt={social.name}
                     width={16}
-                    height={16}
+                    height={18}
                     className={`size-4 opacity-75 group-hover/social:opacity-100 transition-opacity ${social.name === "X" ? "invert" : ""}`}
                   />
                 </a>
