@@ -115,24 +115,15 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-7 flex flex-col justify-center text-white"
           >
-            {/* Tagline */}
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FFF5E0] bg-[#FFF5E0]/10 border border-[#FFF5E0]/20 px-3 py-1 rounded-full uppercase tracking-widest mb-4 lg:mb-6 w-fit"
-            >
-              Engineering Services
-            </motion.span>
-            
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl md:text-6xl tracking-tight leading-[1.05] mb-4 lg:mb-6">
-              <span className="text-[#FFF5E0]">Creative</span> <span className="text-white">&</span> <span className="text-[#06b6d4]">Professional</span>
+            <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-4 lg:mb-6">
+              <span className="block text-[#2563eb] mb-1">Engineering Services</span>
+              <span className="block text-white">Creative &amp; Professional</span>
             </h1>
             
             {/* Brief description */}
-            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-lg mb-6 lg:mb-8">
-              AproMax is your managed engineering services partner. We coordinate scoping, design, and quality assurance through a vetted network of global specialists to deliver precise solutions.
+            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-xl mb-6 lg:mb-8">
+              AproMax Engineering is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
             
             {/* Action buttons */}
