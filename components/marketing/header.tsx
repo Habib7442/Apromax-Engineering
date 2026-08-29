@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
   { name: "Services", href: "/services", hasMegaMenu: true },
   { name: "Industries", href: "/industries" },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "About", href: "/about" },
   { name: "Careers", href: "/careers" },
   { name: "Insights", href: "/blog" },
 ];
@@ -234,18 +234,11 @@ export default function Header() {
               </div>
               <div className="flex flex-col gap-5 pl-2 mt-2">
                 <Link
-                  href="/industries"
+                  href="/"
                   className="text-base font-semibold text-foreground hover:text-primary"
                   onClick={() => setIsOpen(false)}
                 >
-                  Industries
-                </Link>
-                <Link
-                  href="/case-studies"
-                  className="text-base font-semibold text-foreground hover:text-primary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Case Studies
+                  Home
                 </Link>
                 <Link
                   href="/about"
@@ -253,6 +246,20 @@ export default function Header() {
                   onClick={() => setIsOpen(false)}
                 >
                   About Us
+                </Link>
+                <Link
+                  href="/industries"
+                  className="text-base font-semibold text-foreground hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Industries
+                </Link>
+                <Link
+                  href="/careers"
+                  className="text-base font-semibold text-foreground hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Careers
                 </Link>
                 <Link
                   href="/blog"
