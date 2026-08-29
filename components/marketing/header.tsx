@@ -120,23 +120,23 @@ export default function Header() {
                 <button
                   onClick={() => setMegaOpen(!megaOpen)}
                   className={cn(
-                    "flex items-center gap-1 text-sm font-medium transition-colors py-2 cursor-pointer",
+                    "flex items-center gap-1.5 text-base font-semibold transition-colors py-2 cursor-pointer tracking-wide",
                     shouldBeSolid
-                      ? "text-foreground/80 hover:text-primary"
-                      : "text-white/90 hover:text-white"
+                      ? "text-foreground/90 hover:text-primary"
+                      : "text-white hover:text-white/80"
                   )}
                 >
                   {link.name}
-                  <ChevronDown className={cn("size-3.5 transition-transform duration-200", megaOpen && "rotate-180")} />
+                  <ChevronDown className={cn("size-4 transition-transform duration-200", megaOpen && "rotate-180")} />
                 </button>
               ) : (
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-sm font-medium transition-colors py-2",
+                    "text-base font-semibold transition-colors py-2 tracking-wide",
                     shouldBeSolid
-                      ? "text-foreground/80 hover:text-primary"
-                      : "text-white/90 hover:text-white"
+                      ? "text-foreground/90 hover:text-primary"
+                      : "text-white hover:text-white/80"
                   )}
                 >
                   {link.name}
@@ -190,7 +190,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center">
           <Link href="/contact">
             <Button
-              className="bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-semibold text-xs px-5 py-2.5 rounded-md transition-all shadow-sm hover:shadow"
+              className="bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-bold text-sm h-11 px-6 rounded-lg transition-all shadow-md hover:shadow-lg"
             >
               Get a Free Consultation
             </Button>
