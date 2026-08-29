@@ -6,6 +6,7 @@ import ServicesGrid from "@/components/marketing/services-grid";
 import WhyChooseUs from "@/components/marketing/why-choose-us";
 import FeaturedCases from "@/components/marketing/featured-cases";
 import Process from "@/components/marketing/process";
+import BookingSection from "@/components/marketing/booking-section";
 import Testimonials from "@/components/marketing/testimonials";
 import CTABand from "@/components/marketing/cta-band";
 import Footer from "@/components/marketing/footer";
@@ -38,6 +39,9 @@ export default function Home() {
 
         {/* 4-step pipeline layout */}
         <Process />
+
+        {/* Dedicated Scoping Consultation Booking Section */}
+        <BookingSection />
 
         {/* Customer testimonial quotes */}
         <Testimonials />

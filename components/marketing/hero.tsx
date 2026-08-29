@@ -2,58 +2,20 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { createLeadAction } from "@/lib/actions/leads";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
-  const router = useRouter();
-  const [submitted, setSubmitted] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  const [formData, setFormData] = React.useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    service: "engineering",
-    message: ""
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
-    const serviceLabels: Record<string, string> = {
-      engineering: "Engineering Services",
-      design: "Design Services",
-      development: "Web and App Development",
-      analysis: "Analysis Services",
-      other: "Specialized Services"
-    };
-    const serviceLabel = serviceLabels[formData.service] || formData.service;
-    const notes = `Service: ${serviceLabel}\nNotes: ${formData.message || "N/A"}`;
-
-    // Persist lead details to Supabase database (RLS enabled, insert allowed for anon)
-    const result = await createLeadAction(formData);
-    if (!result.success) {
-      console.warn("Failed to persist lead in database:", result.error);
+  const scrollToForm = () => {
+    const el = document.getElementById("booking-section");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
-
-    const params = new URLSearchParams({
-      name: fullName,
-      email: formData.email,
-      notes: notes
-    });
-
-    setLoading(false);
-    setSubmitted(true);
-    router.push(`/book?${params.toString()}`);
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#070b19] pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#070b19] pt-28 pb-20 lg:pt-36 lg:pb-32 border-b border-white/5">
       {/* 1. Background Video & Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden transform-gpu">
         {/* Loop video */}
@@ -76,177 +38,39 @@ export default function Hero() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-stretch lg:min-h-[580px]">
-          {/* Left Panel: Content Block */}
+        <div className="flex flex-col items-center text-center text-white max-w-4xl mx-auto">
+          {/* Content Block */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-7 flex flex-col justify-center text-white"
+            className="flex flex-col items-center text-center"
           >
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-4 lg:mb-6">
+            <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-4 lg:mb-6 text-center">
               <span className="block text-[#2563eb] mb-1">Engineering Services</span>
               <span className="block text-white">Creative &amp; Professional</span>
             </h1>
             
             {/* Brief description */}
-            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-xl mb-6 lg:mb-8">
+            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-2xl mb-8 text-center">
               <strong className="font-bold text-white">AproMax Engineering</strong> is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
             
             {/* Action buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/services">
                 <Button className="w-full sm:w-auto h-12 bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-semibold rounded-lg px-6 shadow-md hover:shadow-lg transition-all group cursor-pointer border-0">
                   Explore Services
                   <ArrowRight className="size-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </Link>
-              <Link href="/about">
-                <Button className="w-full sm:w-auto h-12 border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-white hover:border-white/20 font-semibold rounded-lg px-6 transition-all cursor-pointer">
-                  About AproMax
-                </Button>
-              </Link>
-            </div>
-            
-
-          </motion.div>
-
-          {/* Right Panel: Glassmorphic Consultation Form */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-5 flex flex-col justify-center"
-          >
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_8px_32px_0_rgba(11,18,32,0.3)] relative overflow-hidden group/form">
-              {/* Subtle top bar active element */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-[#0a5cf0]" />
-
-              {submitted ? (
-                <div className="text-center py-10 flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  {/* Glowing Pulsing Checkmark Container */}
-                  <div className="relative size-20 mb-5 flex items-center justify-center">
-                    {/* Outer pulsing ring */}
-                    <div className="absolute inset-0 rounded-full bg-accent/20 animate-ping opacity-75" />
-                    {/* Inner glowing ring */}
-                    <div className="absolute inset-2 rounded-full bg-gradient-to-tr from-accent to-[#0a5cf0] opacity-25 blur-md" />
-                    {/* Core icon background */}
-                    <div className="relative size-14 rounded-full bg-gradient-to-tr from-accent to-[#0a5cf0] flex items-center justify-center text-white shadow-lg shadow-accent/25">
-                      <CheckCircle2 className="size-7 stroke-[2.5]" />
-                    </div>
-                  </div>
-
-                  {/* Scoped Badge */}
-                  <span className="text-[10px] font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-4">
-                    NDA Confidentiality Secured
-                  </span>
-
-                  {/* Header Title */}
-                  <h3 className="font-heading font-bold text-2xl text-white mb-2 tracking-tight">
-                    Request Received!
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-white/70 text-xs md:text-[13px] leading-relaxed max-w-xs mx-auto">
-                    Your parameters are formatted. We are redirecting you to our scheduling calendar to pick a time slot...
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <div>
-                    <h3 className="font-heading font-bold text-xl text-white">
-                      Request <span className="text-accent">Consultation</span>
-                    </h3>
-                    <p className="text-[12px] text-white/60 mt-1">
-                      Confidential B2B scoping. Response within <span className="text-accent font-bold">24 hours</span>.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="John"
-                        value={formData.firstName}
-                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Doe"
-                        value={formData.lastName}
-                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                      Work Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="john@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                      Service of Interest
-                    </label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-[#0d1527] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors cursor-pointer"
-                    >
-                      <option value="engineering">Engineering (Mechanical/Electrical)</option>
-                      <option value="design">Design & 3D Modeling (CAD)</option>
-                      <option value="analysis">Analysis & Simulation (FEA/CFD)</option>
-                      <option value="prototyping">Prototyping & Development</option>
-                      <option value="web-app">Web & Custom App Development</option>
-                      <option value="specialized">Specialized / Niche Services</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                      Project Notes / Message
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Brief description of requirements, tolerances, or solver inputs..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none min-h-[60px]"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full h-11 mt-1 bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-bold rounded-lg text-xs shadow-md transition-all cursor-pointer border-0"
-                  >
-                    {loading ? "Processing..." : "Get a Free Consultation"}
-                  </Button>
-                </form>
-              )}
+              <Button 
+                onClick={scrollToForm}
+                className="w-full sm:w-auto h-12 border border-white/15 bg-white/10 text-white hover:bg-white/20 hover:text-white hover:border-white/30 font-semibold rounded-lg px-6 transition-all cursor-pointer"
+              >
+                Book Now
+              </Button>
             </div>
           </motion.div>
         </div>
