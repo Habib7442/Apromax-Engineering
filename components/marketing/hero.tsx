@@ -46,9 +46,8 @@ export default function Hero() {
             className="flex flex-col items-center text-center"
           >
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-semibold tracking-wider text-white mb-6 shadow-sm">
-              <span className="size-2 rounded-full bg-[#06b6d4] animate-pulse" />
-              <span>Approach. Maximize. Optimize.</span>
+            <div className="inline-flex items-center justify-center px-5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-semibold tracking-wider text-white mb-6 shadow-sm">
+              Approach. Maximize. Optimize.
             </div>
 
             {/* Headline */}
