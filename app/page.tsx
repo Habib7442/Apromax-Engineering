@@ -7,6 +7,7 @@ import FeaturedCases from "@/components/marketing/featured-cases";
 import Process from "@/components/marketing/process";
 import BookingSection from "@/components/marketing/booking-section";
 import Testimonials from "@/components/marketing/testimonials";
+import FAQSection from "@/components/marketing/faq";
 import CTABand from "@/components/marketing/cta-band";
 import Footer from "@/components/marketing/footer";
 
@@ -41,6 +42,9 @@ export default function Home() {
 
         {/* Customer testimonial quotes */}
         <Testimonials />
+
+        {/* Frequently Asked Questions */}
+        <FAQSection />
 
         {/* Action call floating section */}
         <CTABand />
