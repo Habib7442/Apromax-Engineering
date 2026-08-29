@@ -62,48 +62,17 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-50 absolute inset-0 transform-gpu will-change-transform"
+          className="w-full h-full object-cover opacity-80 absolute inset-0 transform-gpu will-change-transform"
         >
           <source src="/api/hero-video" type="video/mp4" />
           <source src="https://sdgenxchgjsoyoecoctv.supabase.co/storage/v1/object/public/assets/team-video.mp4" type="video/mp4" />
         </video>
         
-        {/* Dim the video for premium dark look */}
-        <div className="absolute inset-0 bg-black/45" />
+        {/* Light dim layer to keep text readable while keeping video crisp & visible */}
+        <div className="absolute inset-0 bg-black/30" />
         
-        {/* Netflix-style vertical and horizontal dark gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070b19] via-transparent to-[#070b19]/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070b19] via-transparent to-transparent opacity-80" />
-
-
-        
-        {/* Glow 1: Indigo */}
-        <motion.div
-          animate={{
-            x: [0, 40, -20, 0],
-            y: [0, -30, 40, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-[10%] left-[10%] w-96 h-96 rounded-full bg-[#0a5cf0]/20 blur-[120px] transform-gpu will-change-transform"
-        />
-        
-        {/* Glow 2: Cyan */}
-        <motion.div
-          animate={{
-            x: [0, -50, 30, 0],
-            y: [0, 40, -30, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#06b6d4]/15 blur-[130px] transform-gpu will-change-transform"
-        />
+        {/* Soft top & bottom gradient transitions for smooth header integration */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#070b19]/60" />
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
@@ -123,7 +92,7 @@ export default function Hero() {
             
             {/* Brief description */}
             <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-xl mb-6 lg:mb-8">
-              AproMax Engineering is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
+              <strong className="font-bold text-white">AproMax Engineering</strong> is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
             
             {/* Action buttons */}
@@ -141,23 +110,7 @@ export default function Hero() {
               </Link>
             </div>
             
-            {/* Footer Trust Indicator */}
-            <div className="border-t border-white/10 pt-6 flex flex-row items-center gap-6 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-2">
-              <div className="flex-shrink-0 flex items-center gap-2">
-                <span className="text-[22px] font-bold text-accent font-heading">250+</span>
-                <span className="text-xs text-white/50 leading-none">Projects<br />Delivered</span>
-              </div>
-              <div className="flex-shrink-0 h-6 w-px bg-white/10" />
-              <div className="flex-shrink-0 flex items-center gap-2">
-                <span className="text-[22px] font-bold text-accent font-heading">99.2%</span>
-                <span className="text-xs text-white/50 leading-none">On-Time<br />Milestones</span>
-              </div>
-              <div className="flex-shrink-0 h-6 w-px bg-white/10" />
-              <div className="flex-shrink-0 flex items-center gap-2">
-                <span className="text-[22px] font-bold text-accent font-heading">ISO 9001</span>
-                <span className="text-xs text-white/50 leading-none">Aligned<br />Quality Standards</span>
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Right Panel: Glassmorphic Consultation Form */}
