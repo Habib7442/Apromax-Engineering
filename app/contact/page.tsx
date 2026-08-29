@@ -77,7 +77,7 @@ export default function ContactPage() {
             <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-3">
               Contact Us
             </span>
-            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-[#070b19] tracking-tight mb-4 lg:whitespace-nowrap">
+            <h1 className="font-heading font-bold text-2xl md:text-3xl lg:text-4xl text-[#070b19] tracking-tight mb-3 lg:whitespace-nowrap">
               Have an engineering project in mind?
             </h1>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-none">
