@@ -71,12 +71,17 @@ export default function BookingSection() {
               Project Scoping
             </span>
             <h2 className="font-heading font-bold text-3xl md:text-5xl tracking-tight leading-tight text-white">
-              Ready to Scope Your <br className="hidden md:inline" />
-              <span className="text-accent">Engineering Project?</span>
+              Let's Discuss Your <br className="hidden md:inline" />
+              <span className="text-accent">Engineering Requirements</span>
             </h2>
-            <p className="text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
-              Book a confidential technical consultation with our engineering directors.
-            </p>
+            <div className="space-y-3 text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
+              <p>
+                Have an engineering project in mind? AproMax Engineering provides multidisciplinary engineering and technology solutions for clients across the USA and global markets.
+              </p>
+              <p>
+                Share your requirements with us, and our engineering team will review your project and connect with you to discuss the scope, deliverables, timeline and next steps.
+              </p>
+            </div>
           </motion.div>
 
           {/* Right Side: The Form */}
