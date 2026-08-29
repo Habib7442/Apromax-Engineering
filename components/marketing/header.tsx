@@ -69,7 +69,6 @@ export default function Header() {
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Initial check
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -95,18 +94,15 @@ export default function Header() {
       )}
     >
       <div className="max-w-[1200px] mx-auto px-4 md:px-12 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
+        {/* Logo container with white background pill for original logo */}
+        <Link href="/" className="flex items-center gap-2 group bg-white px-3 py-1.5 rounded-lg shadow-sm hover:shadow transition-all border border-slate-200/50">
           <Image
             src="/logo.webp"
             alt="AproMax Engineering"
             width={120}
             height={32}
             style={{ width: "auto", height: "auto" }}
-            className={cn(
-              "h-8 w-auto transition-transform group-hover:scale-[1.02]",
-              !shouldBeSolid && "brightness-0 invert"
-            )}
+            className="h-7 w-auto transition-transform group-hover:scale-[1.02]"
             priority
           />
         </Link>
@@ -127,7 +123,7 @@ export default function Header() {
                     "flex items-center gap-1 text-sm font-medium transition-colors py-2 cursor-pointer",
                     shouldBeSolid
                       ? "text-foreground/80 hover:text-primary"
-                      : "text-white/80 hover:text-white"
+                      : "text-white/90 hover:text-white"
                   )}
                 >
                   {link.name}
@@ -140,7 +136,7 @@ export default function Header() {
                     "text-sm font-medium transition-colors py-2",
                     shouldBeSolid
                       ? "text-foreground/80 hover:text-primary"
-                      : "text-white/80 hover:text-white"
+                      : "text-white/90 hover:text-white"
                   )}
                 >
                   {link.name}
@@ -269,7 +265,7 @@ export default function Header() {
             </nav>
             <div className="border-t border-border pt-6 pb-12 flex flex-col gap-4">
               <Link href="/contact" onClick={() => setIsOpen(false)} className="w-full">
-                <Button className="w-full bg-primary text-white font-semibold rounded-md py-5">
+                <Button className="w-full bg-[#06b6d4] hover:bg-[#06b6d4]/90 text-black font-bold rounded-md py-5">
                   Get a Free Consultation
                 </Button>
               </Link>
