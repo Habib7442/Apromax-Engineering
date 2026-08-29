@@ -15,7 +15,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#070b19] pt-28 pb-20 lg:pt-36 lg:pb-32 border-b border-white/5">
+    <section className="relative overflow-hidden bg-[#070b19] min-h-screen flex items-center justify-center pt-24 pb-16 border-b border-white/5">
       {/* 1. Background Video & Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden transform-gpu">
         {/* Loop video */}
@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#070b19]/60" />
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-12 relative z-10 py-12">
         <div className="flex flex-col items-center text-center text-white max-w-4xl mx-auto">
           {/* Content Block */}
           <motion.div 
