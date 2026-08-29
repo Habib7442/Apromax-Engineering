@@ -3,7 +3,6 @@ import Hero from "@/components/marketing/hero";
 import Stats from "@/components/marketing/stats";
 import ServicesGrid from "@/components/marketing/services-grid";
 import WhyChooseUs from "@/components/marketing/why-choose-us";
-import FeaturedCases from "@/components/marketing/featured-cases";
 import Process from "@/components/marketing/process";
 import BookingSection from "@/components/marketing/booking-section";
 import FAQSection from "@/components/marketing/faq";
@@ -29,9 +28,6 @@ export default function Home() {
 
         {/* Core business value differentiators */}
         <WhyChooseUs />
-
-        {/* Premium asymmetrical case study blocks */}
-        <FeaturedCases />
 
         {/* 4-step pipeline layout */}
         <Process />
