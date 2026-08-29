@@ -46,16 +46,14 @@ export default function Hero() {
             className="flex flex-col items-center text-center"
           >
             {/* Headline */}
-            <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-4 lg:mb-6 text-center">
-              <span className="block text-[#06b6d4] mb-1">Engineering Services</span>
-              <span className="block text-white">Creative &amp; Professional</span>
+            <h1 className="font-heading font-bold tracking-tight leading-[1.1] mb-4 lg:mb-6 text-center">
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#0d9488] mb-2">Engineering Services</span>
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">Creative &amp; Professional</span>
             </h1>
 
-            {/* Brief description in 3 lines */}
-            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-3xl mb-8 text-center">
-              <span className="block md:inline-block"><strong className="font-bold text-white">AproMax Engineering</strong> is a multidisciplinary firm combining expertise in engineering, design,</span>{" "}
-              <span className="block md:inline-block">and technology to drive progress and innovation. Our team of passionate problem-solvers</span>{" "}
-              <span className="block md:inline-block">delivers innovative solutions that meet unique client needs.</span>
+            {/* Brief description */}
+            <p className="text-[#ECEFF4] text-base md:text-lg leading-relaxed max-w-2xl mb-8 text-center">
+              <strong className="font-bold text-white">AproMax Engineering</strong> is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
 
             {/* Action buttons */}
