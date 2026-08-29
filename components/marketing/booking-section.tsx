@@ -75,7 +75,7 @@ export default function BookingSection() {
               <span className="text-accent">Engineering Project?</span>
             </h2>
             <p className="text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
-              Book a confidential technical consultation with our engineering directors. We analyze your CAD/FEA tolerances, solver constraints, and deliverables.
+              Book a confidential technical consultation with our engineering directors.
             </p>
           </motion.div>
 
