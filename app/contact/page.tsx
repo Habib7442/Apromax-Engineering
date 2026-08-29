@@ -73,14 +73,14 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header section */}
-          <div className="max-w-3xl mb-12 md:mb-16">
+          <div className="w-full max-w-none mb-12 md:mb-16">
             <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-3">
               Contact Us
             </span>
-            <h1 className="font-heading font-bold text-3xl md:text-5xl text-[#070b19] tracking-tight mb-4">
+            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-[#070b19] tracking-tight mb-4 lg:whitespace-nowrap">
               Have an engineering project in mind?
             </h1>
-            <div className="space-y-3 text-muted-foreground text-base md:text-lg leading-relaxed">
+            <div className="space-y-3 text-muted-foreground text-base md:text-lg leading-relaxed max-w-none">
               <p>
                 AproMax Engineering delivers multidisciplinary engineering and technology solutions to clients across the USA and global markets.
               </p>
