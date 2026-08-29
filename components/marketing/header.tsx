@@ -194,7 +194,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center">
           <Link href="/contact">
             <Button
-              className="bg-primary hover:bg-primary/95 text-white font-semibold text-xs px-5 py-2.5 rounded-md transition-all shadow-sm hover:shadow"
+              className="bg-[#06b6d4] hover:bg-[#06b6d4]/90 text-black font-bold text-xs px-5 py-2.5 rounded-md transition-all shadow-sm hover:shadow"
             >
               Get a Free Consultation
             </Button>

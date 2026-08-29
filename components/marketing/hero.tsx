@@ -24,17 +24,16 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-80 absolute inset-0 transform-gpu will-change-transform"
+          className="w-full h-full object-cover opacity-100 absolute inset-0 transform-gpu will-change-transform"
         >
-          <source src="/api/hero-video" type="video/mp4" />
-          <source src="https://sdgenxchgjsoyoecoctv.supabase.co/storage/v1/object/public/assets/team-video.mp4" type="video/mp4" />
+          <source src="/hero_video.mp4" type="video/mp4" />
         </video>
         
-        {/* Light dim layer to keep text readable while keeping video crisp & visible */}
-        <div className="absolute inset-0 bg-black/30" />
+        {/* Subtle dim layer for contrast while keeping Earth video bright & vibrant */}
+        <div className="absolute inset-0 bg-black/20" />
         
-        {/* Soft top & bottom gradient transitions for smooth header integration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#070b19]/60" />
+        {/* Soft top & bottom gradient transition */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#070b19]/80" />
       </div>
 
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-12 relative z-10 py-12">
@@ -48,7 +47,7 @@ export default function Hero() {
           >
             {/* Headline */}
             <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-4 lg:mb-6 text-center">
-              <span className="block text-[#2563eb] mb-1">Engineering Services</span>
+              <span className="block text-[#06b6d4] mb-1">Engineering Services</span>
               <span className="block text-white">Creative &amp; Professional</span>
             </h1>
             
@@ -60,7 +59,7 @@ export default function Hero() {
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/services">
-                <Button className="w-full sm:w-auto h-12 bg-[#0a5cf0] hover:bg-[#0a5cf0]/90 text-white font-semibold rounded-lg px-6 shadow-md hover:shadow-lg transition-all group cursor-pointer border-0">
+                <Button className="w-full sm:w-auto h-12 bg-[#06b6d4] hover:bg-[#06b6d4]/90 text-black font-bold rounded-lg px-6 shadow-md hover:shadow-lg transition-all group cursor-pointer border-0">
                   Explore Services
                   <ArrowRight className="size-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
                 </Button>
