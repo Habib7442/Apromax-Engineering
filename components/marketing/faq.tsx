@@ -27,24 +27,39 @@ const faqs: FAQItem[] = [
     answer: (
       <div className="space-y-3 text-slate-600 text-sm md:text-base leading-relaxed">
         <p>We offer a wide range of engineering services including:</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 pl-2">
-          {[
-            "Civil & Structural Engineering",
-            "Mechanical Engineering",
-            "Electrical Engineering",
-            "Software Development",
-            "Hardware Engineering",
-            "Environmental Engineering",
-            "Project Management",
-            "Quality Assurance"
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-800">
-              <span className="size-1.5 rounded-full bg-[#0a5cf0] shrink-0" />
-              <span>{item}</span>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 pt-1 pl-2">
+          <div className="space-y-2.5">
+            {[
+              "Mechanical Engineering",
+              "Piping Engineering",
+              "Plant Engineering",
+              "Structural & Civil Engineering",
+              "Electrical Engineering",
+              "Control Systems Engineering"
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-800">
+                <span className="size-1.5 rounded-full bg-[#0a5cf0] shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-2.5">
+            {[
+              "Electronics Design",
+              "PCB Design",
+              "Embedded Systems & Firmware",
+              "Product Design & Development",
+              "Engineering Analysis & Simulation",
+              "Website Design & Development"
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-xs md:text-sm font-medium text-slate-800">
+                <span className="size-1.5 rounded-full bg-[#0a5cf0] shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="pt-1 text-xs md:text-sm text-slate-500 italic">
+        <p className="pt-2 text-xs md:text-sm text-slate-500 italic">
           Each service is tailored to meet our clients&apos; specific needs and industry standards.
         </p>
       </div>
