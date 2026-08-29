@@ -47,7 +47,7 @@ export default function Hero() {
           >
             {/* Top Pill Badge */}
             <div className="inline-flex items-center justify-center px-5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-semibold tracking-wider text-white mb-6 shadow-sm">
-              Approach. Maximize. Optimize.
+              Approach, Maximize, Optimize.
             </div>
 
             {/* Headline */}
