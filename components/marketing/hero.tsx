@@ -47,7 +47,7 @@ export default function Hero() {
           >
             {/* Headline */}
             <h1 className="font-heading font-bold tracking-tight leading-[1.1] mb-4 lg:mb-6 text-center">
-              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#2dd4bf] mb-2">Engineering Services</span>
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#2563eb] mb-2">Engineering Services</span>
               <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">Creative &amp; Professional</span>
             </h1>
 
