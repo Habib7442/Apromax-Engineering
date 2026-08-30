@@ -26,12 +26,13 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <p className="text-white/60 text-[12.5px] leading-relaxed max-w-sm mb-6">
-              AproMax Engineering LLP is a managed engineering services partner and specialist orchestrator. We scope, coordinate, and quality-check complex technical projects delivered through a vetted global network.
+            <p className="text-white/60 text-[12.5px] sm:text-xs md:text-[13px] leading-relaxed max-w-sm mb-6">
+              AproMax Engineering LLP provides remote engineering and design services to manufacturers, OEMs, EPC contractors, engineering firms, and industrial companies.
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               {[
                 { name: "linkedin", href: "https://www.linkedin.com/company/apromax-eng-llp/posts/?feedView=all" },
+                { name: "facebook", href: "https://www.facebook.com/share/1DafDhsYvB/?mibextid=wwXIfr" },
                 { name: "instagram", href: "https://www.instagram.com/apromax__/" },
                 { name: "whatsapp", href: "https://wa.me/919577291349" }
               ].map((social) => (
@@ -40,15 +41,15 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="size-8 rounded bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors group/social"
+                  className="size-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all group/social"
                   aria-label={social.name}
                 >
                   <Image
                     src={`/social-icons/${social.name}.webp`}
                     alt={social.name}
-                    width={16}
-                    height={18}
-                    className={`size-4 opacity-75 group-hover/social:opacity-100 transition-opacity ${social.name === "X" ? "invert" : ""}`}
+                    width={20}
+                    height={20}
+                    className="size-5 opacity-80 group-hover/social:opacity-100 transition-opacity"
                   />
                 </a>
               ))}
