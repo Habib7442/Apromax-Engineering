@@ -92,8 +92,7 @@ export default function ContactPage() {
               
               {/* Regional coordination card */}
               <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
-                <h3 className="font-heading font-semibold text-lg text-[#070b19] mb-4 flex items-center gap-2">
-                  <Globe className="size-5 text-primary" />
+                <h3 className="font-heading font-semibold text-base sm:text-lg text-[#070b19] mb-4 whitespace-nowrap">
                   Global Engineering. Delivered from India.
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6">
