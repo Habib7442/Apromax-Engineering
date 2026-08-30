@@ -121,8 +121,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Timezone / Support Hours</h4>
                       <p className="text-muted-foreground text-sm">
-                        9:00 AM – 6:00 PM IST (Mon – Fri)<br />
-                        <span className="text-xs text-primary font-medium">Auto-translation for US Timezones supported</span>
+                        9:00 AM – 6:00 PM IST (Mon – Fri)
                       </p>
                     </div>
                   </div>
@@ -145,14 +144,14 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Direct Call</h4>
-                      <div className="flex flex-col gap-1">
-                        <a href="tel:+919577291349" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-1.5">
+                      <div className="flex flex-col gap-1.5">
+                        <a href="tel:+919577291349" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-2">
                           <span>+91-9577291349</span>
-                          <span className="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5 font-bold uppercase tracking-wider scale-90">IN</span>
+                          <span className="text-base" role="img" aria-label="India flag">🇮🇳</span>
                         </a>
-                        <a href="tel:+13123139125" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-1.5">
+                        <a href="tel:+13123139125" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-2">
                           <span>+1 (312) 313-9125</span>
-                          <span className="text-[10px] bg-slate-100 text-slate-500 rounded px-1.5 py-0.5 font-bold uppercase tracking-wider scale-90">US</span>
+                          <span className="text-base" role="img" aria-label="US flag">🇺🇸</span>
                         </a>
                       </div>
                     </div>

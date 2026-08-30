@@ -139,9 +139,15 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5 text-white/60 text-xs">
                 <Phone className="size-4 text-accent shrink-0 mt-0.5" />
-                <span className="flex flex-col">
-                  <span>+91-9577291349 <span className="text-[10px] text-white/45">(IN)</span></span>
-                  <span>+1 (312) 313-9125 <span className="text-[10px] text-white/45">(US)</span></span>
+                <span className="flex flex-col gap-1">
+                  <a href="tel:+919577291349" className="hover:text-white transition-colors flex items-center gap-1.5">
+                    <span>+91-9577291349</span>
+                    <span className="text-sm" role="img" aria-label="India flag">🇮🇳</span>
+                  </a>
+                  <a href="tel:+13123139125" className="hover:text-white transition-colors flex items-center gap-1.5">
+                    <span>+1 (312) 313-9125</span>
+                    <span className="text-sm" role="img" aria-label="US flag">🇺🇸</span>
+                  </a>
                 </span>
               </li>
               <li className="flex items-center gap-2.5 text-white/60 text-xs">
