@@ -37,7 +37,7 @@ export default function AboutPage() {
       {/* Spacer for fixed header */}
       <div className="h-[76px]" />
 
-      <main className="flex-grow py-12 md:py-20 text-[#070b19] relative overflow-hidden">
+      <main className="flex-grow py-8 md:py-16 text-[#070b19] relative overflow-hidden">
         {/* Subtle blur background effects */}
         <div className="absolute top-[15%] left-[5%] w-96 h-96 rounded-full bg-blue-100/30 blur-[130px] pointer-events-none transform-gpu" />
         <div className="absolute bottom-[20%] right-[5%] w-[450px] h-[450px] rounded-full bg-cyan-100/20 blur-[130px] pointer-events-none transform-gpu" />
@@ -45,12 +45,12 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header section */}
-          <div className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
+          <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12">
             <motion.h1 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6 text-primary whitespace-nowrap"
+              className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 md:mb-6 text-primary sm:whitespace-nowrap"
             >
               About AproMax Engineering LLP
             </motion.h1>
@@ -58,21 +58,21 @@ export default function AboutPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-3xl mx-auto"
+              className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl mx-auto"
             >
               AproMax Engineering is a highly regarded multidisciplinary engineering and design firm that seamlessly integrates a wide array of expertise in engineering, design, and advanced technology to propel progress and foster innovation. Our dedicated team, composed of passionate problem-solvers and skilled engineers, is committed to providing state-of-the-art solutions that are meticulously tailored to address the unique challenges and requirements of our clients.
             </motion.p>
           </div>
 
           {/* Mission & Vision Side-by-Side Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
             {/* Mission Card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-3xl overflow-hidden border border-slate-200 aspect-[4/3] group shadow-sm h-[320px] md:h-[400px]"
+              className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-200 group shadow-sm min-h-[340px] sm:min-h-[380px] md:h-[420px] flex flex-col justify-end"
             >
               <Image
                 src="/images/mission_teamwork.webp"
@@ -82,14 +82,14 @@ export default function AboutPage() {
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
               
               {/* Overlaid dark bottom block */}
-              <div className="absolute bottom-0 left-0 right-0 bg-[#0c122c]/90 border-t border-white/5 p-6 md:p-8 text-white z-10">
-                <h2 className="font-heading font-bold text-lg md:text-xl text-[#06b6d4] mb-2.5">
+              <div className="relative bg-[#0c122c]/90 border-t border-white/10 p-5 sm:p-6 md:p-8 text-white z-10 backdrop-blur-sm">
+                <h2 className="font-heading font-bold text-base sm:text-lg md:text-xl text-[#06b6d4] mb-2">
                   Our Mission
                 </h2>
-                <p className="text-white/80 text-xs md:text-sm leading-relaxed">
+                <p className="text-white/85 text-xs sm:text-sm leading-relaxed">
                   Our mission is to empower progress through engineering excellence. We strive to deliver high-quality solutions, foster a culture of innovation, build long-term relationships, and make a positive impact on the communities we serve.
                 </p>
               </div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-3xl overflow-hidden border border-slate-200 aspect-[4/3] group shadow-sm h-[320px] md:h-[400px]"
+              className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-200 group shadow-sm min-h-[340px] sm:min-h-[380px] md:h-[420px] flex flex-col justify-end"
             >
               <Image
                 src="/images/vision_strategy.webp"
@@ -111,14 +111,14 @@ export default function AboutPage() {
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.01]"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
 
               {/* Overlaid dark bottom block */}
-              <div className="absolute bottom-0 left-0 right-0 bg-[#0c122c]/90 border-t border-white/5 p-6 md:p-8 text-white z-10">
-                <h2 className="font-heading font-bold text-lg md:text-xl text-[#06b6d4] mb-2.5">
+              <div className="relative bg-[#0c122c]/90 border-t border-white/10 p-5 sm:p-6 md:p-8 text-white z-10 backdrop-blur-sm">
+                <h2 className="font-heading font-bold text-base sm:text-lg md:text-xl text-[#06b6d4] mb-2">
                   Our Vision
                 </h2>
-                <p className="text-white/80 text-xs md:text-sm leading-relaxed">
+                <p className="text-white/85 text-xs sm:text-sm leading-relaxed">
                   Our vision is to become a globally recognized leader in engineering excellence, driving innovation and sustainable progress that improves lives and shapes a better future.
                 </p>
               </div>
@@ -126,8 +126,8 @@ export default function AboutPage() {
           </div>
 
           {/* Our Values Section */}
-          <div className="border-t border-slate-100 pt-14 md:pt-20">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-center text-[#070b19] mb-12 md:mb-16">
+          <div className="border-t border-slate-200/80 pt-8 md:pt-12">
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-center text-[#070b19] mb-8 md:mb-12">
               Our Values
             </h2>
 
