@@ -7,6 +7,28 @@ import { useRouter } from "next/navigation";
 import { createLeadAction } from "@/lib/actions/leads";
 import { Button } from "@/components/ui/button";
 
+const COUNTRIES = [
+  { name: "United States", code: "+1", placeholder: "+1 (555) 000-0000" },
+  { name: "India", code: "+91", placeholder: "+91 98765 43210" },
+  { name: "United Kingdom", code: "+44", placeholder: "+44 7911 123456" },
+  { name: "Canada", code: "+1", placeholder: "+1 (416) 000-0000" },
+  { name: "Germany", code: "+49", placeholder: "+49 151 12345678" },
+  { name: "Australia", code: "+61", placeholder: "+61 400 123 456" },
+  { name: "United Arab Emirates", code: "+971", placeholder: "+971 50 123 4567" },
+  { name: "Saudi Arabia", code: "+966", placeholder: "+966 50 123 4567" },
+  { name: "Singapore", code: "+65", placeholder: "+65 8123 4567" },
+  { name: "Japan", code: "+81", placeholder: "+81 90 1234 5678" },
+  { name: "France", code: "+33", placeholder: "+33 6 12 34 56 78" },
+  { name: "Netherlands", code: "+31", placeholder: "+31 6 12345678" },
+  { name: "Switzerland", code: "+41", placeholder: "+41 79 123 45 67" },
+  { name: "Italy", code: "+39", placeholder: "+39 312 345 6789" },
+  { name: "Spain", code: "+34", placeholder: "+34 612 34 56 78" },
+  { name: "Brazil", code: "+55", placeholder: "+55 11 91234-5678" },
+  { name: "Mexico", code: "+52", placeholder: "+52 55 1234 5678" },
+  { name: "South Korea", code: "+82", placeholder: "+82 10-1234-5678" },
+  { name: "Other / Rest of World", code: "+", placeholder: "+1 555 000 0000" },
+];
+
 export default function BookingSection() {
   const router = useRouter();
   const [submitted, setSubmitted] = React.useState(false);
@@ -16,11 +38,29 @@ export default function BookingSection() {
     lastName: "",
     company: "",
     email: "",
-    phone: "",
-    country: "",
+    phone: "+1 ",
+    country: "United States",
     service: "engineering",
     message: ""
   });
+
+  const handleCountryChange = (selectedCountryName: string) => {
+    const found = COUNTRIES.find((c) => c.name === selectedCountryName);
+    const newCode = found ? found.code : "+";
+    
+    let currentPhone = formData.phone;
+    const matchedDial = COUNTRIES.find((c) => currentPhone.startsWith(c.code));
+    
+    if (!currentPhone || matchedDial || currentPhone.trim() === "" || currentPhone.startsWith("+")) {
+      currentPhone = `${newCode} `;
+    }
+
+    setFormData({
+      ...formData,
+      country: selectedCountryName,
+      phone: currentPhone,
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -186,27 +226,31 @@ export default function BookingSection() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
+                        Country / Region*
+                      </label>
+                      <select
+                        required
+                        value={formData.country}
+                        onChange={(e) => handleCountryChange(e.target.value)}
+                        className="w-full bg-[#0d1527] border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors cursor-pointer"
+                      >
+                        {COUNTRIES.map((c) => (
+                          <option key={c.name} value={c.name}>
+                            {c.name} ({c.code})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
                         Phone Number
                       </label>
                       <input
                         type="tel"
-                        placeholder="+1 (555) 000-0000"
+                        placeholder={COUNTRIES.find((c) => c.name === formData.country)?.placeholder || "+1 (555) 000-0000"}
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                        Country / Region*
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="United States, India..."
-                        value={formData.country}
-                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                       />
                     </div>
                   </div>
