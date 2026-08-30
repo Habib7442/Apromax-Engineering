@@ -13,25 +13,25 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-16">
           {/* Logo & Pitch */}
           <div className="md:col-span-4 flex flex-col justify-start">
-            <Link href="/" className="mb-5 inline-block">
-              <Image
-                src="/logo.webp"
-                alt="AproMax Engineering"
-                width={120}
-                height={32}
-                style={{ width: "auto", height: "auto" }}
-                className="h-8 w-auto brightness-0 invert"
-                priority
-              />
-            </Link>
+            <div className="mb-5">
+              <Link href="/" className="inline-flex items-center gap-2 group bg-white px-3.5 py-2 rounded-lg shadow-sm hover:shadow transition-all border border-slate-200/50">
+                <Image
+                  src="/logo.webp"
+                  alt="AproMax Engineering"
+                  width={120}
+                  height={32}
+                  style={{ width: "auto", height: "auto" }}
+                  className="h-7 w-auto transition-transform group-hover:scale-[1.02]"
+                  priority
+                />
+              </Link>
+            </div>
             <p className="text-white/60 text-[12.5px] leading-relaxed max-w-sm mb-6">
               AproMax Engineering LLP is a managed engineering services partner and specialist orchestrator. We scope, coordinate, and quality-check complex technical projects delivered through a vetted global network.
             </p>
             <div className="flex items-center gap-2">
               {[
                 { name: "linkedin", href: "https://www.linkedin.com/company/apromax-eng-llp/posts/?feedView=all" },
-                { name: "X", href: "https://x.com/apromaxeng" },
-                { name: "facebook", href: "https://facebook.com/apromaxeng" },
                 { name: "instagram", href: "https://www.instagram.com/apromax__/" },
                 { name: "whatsapp", href: "https://wa.me/919577291349" }
               ].map((social) => (
@@ -68,22 +68,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/services/design" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Design & 3D Modeling
+                  Design &amp; 3D Modeling
                 </Link>
               </li>
               <li>
                 <Link href="/services/analysis" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Analysis & Simulation
+                  Analysis &amp; Simulation
                 </Link>
               </li>
               <li>
                 <Link href="/services/prototyping" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Prototyping & Testing
+                  Prototyping &amp; Testing
                 </Link>
               </li>
               <li>
                 <Link href="/services/web-app" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Web & App Development
+                  Web &amp; App Development
                 </Link>
               </li>
               <li>
@@ -101,8 +101,23 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-2.5">
               <li>
+                <Link href="/" className="text-white/60 hover:text-white text-xs transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-white/60 hover:text-white text-xs transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-white/60 hover:text-white text-xs transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/industries" className="text-white/60 hover:text-white text-xs transition-colors">
+                  Industries
                 </Link>
               </li>
               <li>
