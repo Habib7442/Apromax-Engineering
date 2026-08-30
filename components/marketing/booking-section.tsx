@@ -14,7 +14,10 @@ export default function BookingSection() {
   const [formData, setFormData] = React.useState({
     firstName: "",
     lastName: "",
+    company: "",
     email: "",
+    phone: "",
+    country: "",
     service: "engineering",
     message: ""
   });
@@ -25,14 +28,14 @@ export default function BookingSection() {
 
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
     const serviceLabels: Record<string, string> = {
-      engineering: "Engineering Services",
+      engineering: "Engineering (Mechanical/Electrical)",
       design: "Design Services",
       development: "Web and App Development",
       analysis: "Analysis Services",
       other: "Specialized Services"
     };
     const serviceLabel = serviceLabels[formData.service] || formData.service;
-    const notes = `Service: ${serviceLabel}\nNotes: ${formData.message || "N/A"}`;
+    const notes = `Company: ${formData.company || "N/A"}\nPhone: ${formData.phone || "N/A"}\nCountry: ${formData.country || "N/A"}\nService: ${serviceLabel}\nDetails: ${formData.message || "N/A"}`;
 
     const result = await createLeadAction(formData);
     if (!result.success) {
@@ -125,7 +128,7 @@ export default function BookingSection() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                        First Name
+                        First Name*
                       </label>
                       <input
                         type="text"
@@ -138,7 +141,7 @@ export default function BookingSection() {
                     </div>
                     <div>
                       <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                        Last Name
+                        Last Name*
                       </label>
                       <input
                         type="text"
@@ -151,23 +154,66 @@ export default function BookingSection() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                      Work Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="john@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-                    />
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
+                        Company Name*
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Acme Corp"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
+                        Business Email*
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="john@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
+                        Country / Region*
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="United States, India..."
+                        value={formData.country}
+                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                      Service of Interest
+                      Primary Service of Interest
                     </label>
                     <select
                       value={formData.service}
@@ -175,17 +221,17 @@ export default function BookingSection() {
                       className="w-full bg-[#0d1527] border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors cursor-pointer"
                     >
                       <option value="engineering">Engineering (Mechanical/Electrical)</option>
-                      <option value="design">Design & 3D Modeling (CAD)</option>
-                      <option value="analysis">Analysis & Simulation (FEA/CFD)</option>
-                      <option value="prototyping">Prototyping & Development</option>
-                      <option value="web-app">Web & Custom App Development</option>
+                      <option value="design">Design &amp; 3D Modeling (CAD)</option>
+                      <option value="analysis">Analysis &amp; Simulation (FEA/CFD)</option>
+                      <option value="prototyping">Prototyping &amp; Development</option>
+                      <option value="web-app">Web &amp; Custom App Development</option>
                       <option value="specialized">Specialized / Niche Services</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-[10px] font-bold text-accent uppercase tracking-wider mb-1">
-                      Project Notes / Message
+                      Briefly Outline Your Project Details
                     </label>
                     <textarea
                       rows={3}

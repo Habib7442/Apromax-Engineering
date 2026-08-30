@@ -5,7 +5,10 @@ import { createClient } from "@/lib/supabase/server";
 export async function createLeadAction(formData: {
   firstName: string;
   lastName: string;
+  company?: string;
   email: string;
+  phone?: string;
+  country?: string;
   service: string;
   message: string;
 }) {
@@ -18,7 +21,10 @@ export async function createLeadAction(formData: {
         {
           first_name: formData.firstName,
           last_name: formData.lastName,
+          company: formData.company || null,
           email: formData.email,
+          phone: formData.phone || null,
+          country: formData.country || null,
           service: formData.service,
           message: formData.message || null,
           status: "pending_booking"

@@ -15,7 +15,10 @@ export default function ContactPage() {
   const [formData, setFormData] = React.useState({
     firstName: "",
     lastName: "",
+    company: "",
     email: "",
+    phone: "",
+    country: "",
     service: "engineering",
     message: ""
   });
@@ -42,7 +45,7 @@ export default function ContactPage() {
       other: "Specialized Services"
     };
     const serviceLabel = serviceLabels[formData.service] || formData.service;
-    const notes = `Service: ${serviceLabel}\nNotes: ${formData.message || "N/A"}`;
+    const notes = `Company: ${formData.company || "N/A"}\nPhone: ${formData.phone || "N/A"}\nCountry: ${formData.country || "N/A"}\nService: ${serviceLabel}\nDetails: ${formData.message || "N/A"}`;
 
     // Save lead to Supabase
     const result = await createLeadAction(formData);
@@ -201,7 +204,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="firstName" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
-                        First Name
+                        First Name*
                       </label>
                       <input
                         type="text"
@@ -216,7 +219,7 @@ export default function ContactPage() {
 
                     <div>
                       <label htmlFor="lastName" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
-                        Last Name
+                        Last Name*
                       </label>
                       <input
                         type="text"
@@ -230,19 +233,67 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
-                      Work Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      placeholder="john@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="company" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                        Company Name*
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        required
+                        placeholder="Acme Corp"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                        Business Email*
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        required
+                        placeholder="john@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="phone" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        placeholder="+1 (555) 000-0000"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="country" className="block text-xs font-bold text-[#070b19] uppercase tracking-wider mb-2">
+                        Country / Region*
+                      </label>
+                      <input
+                        type="text"
+                        id="country"
+                        required
+                        placeholder="United States, India, Germany..."
+                        value={formData.country}
+                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all"
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -276,7 +327,7 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       id="message"
-                      rows={5}
+                      rows={4}
                       required
                       placeholder="Brief description of requirements, tolerances, or solver inputs..."
                       value={formData.message}
