@@ -73,7 +73,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header section */}
-          <div className="w-full max-w-none mb-12 md:mb-16">
+          <div className="w-full max-w-none mb-6 md:mb-8">
             <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-3">
               Contact Us
             </span>
