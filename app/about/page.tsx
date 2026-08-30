@@ -65,7 +65,7 @@ export default function AboutPage() {
           </div>
 
           {/* Mission & Vision Side-by-Side Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 md:mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-16">
             {/* Mission Card */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -126,7 +126,7 @@ export default function AboutPage() {
           </div>
 
           {/* Our Values Section */}
-          <div className="border-t border-slate-100 pt-8 md:pt-12">
+          <div className="border-t border-slate-100 pt-14 md:pt-20">
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-center text-[#070b19] mb-12 md:mb-16">
               Our Values
             </h2>
