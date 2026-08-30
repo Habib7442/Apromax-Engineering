@@ -59,6 +59,27 @@ export default function Header() {
   const isHome = pathname === "/";
   const shouldBeSolid = scrolled || isOpen || !isHome;
 
+  // Unlock scroll and close menus on route change
+  React.useEffect(() => {
+    setIsOpen(false);
+    setMegaOpen(false);
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }, [pathname]);
+
+  // Handle window resize so lg screens don't freeze scroll if mobile menu was open
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && isOpen) {
+        setIsOpen(false);
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+      }
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isOpen]);
+
   React.useEffect(() => {
     let active = false;
     const handleScroll = () => {
@@ -76,11 +97,14 @@ export default function Header() {
   React.useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [isOpen]);
 
