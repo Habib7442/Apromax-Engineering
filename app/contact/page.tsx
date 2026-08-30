@@ -143,30 +143,15 @@ export default function ContactPage() {
                       <Phone className="size-5 text-primary" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Direct Call</h4>
-                      <div className="flex flex-col gap-1.5">
-                        <a href="tel:+919577291349" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-2">
+                      <h4 className="text-xs font-bold text-[#070b19] uppercase tracking-wider mb-1">Phone</h4>
+                      <div className="flex flex-col gap-1 text-sm">
+                        <a href="tel:+919577291349" className="text-muted-foreground hover:text-primary font-medium flex items-center gap-1.5">
+                          <strong className="font-semibold text-[#070b19]">India:</strong>
                           <span>+91-9577291349</span>
-                          <span className="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-700">
-                            <svg className="w-3.5 h-2.5 rounded-[1px] inline-block shrink-0" viewBox="0 0 640 480">
-                              <path fill="#f93" d="0 0h640v160H0z"/>
-                              <path fill="#fff" d="0 160h640v160H0z"/>
-                              <path fill="#128807" d="0 320h640v160H0z"/>
-                              <circle cx="320" cy="240" r="50" fill="none" stroke="#000080" strokeWidth="14"/>
-                            </svg>
-                            IN
-                          </span>
                         </a>
-                        <a href="tel:+13123139125" className="text-muted-foreground hover:text-primary text-sm font-medium flex items-center gap-2">
+                        <a href="tel:+13123139125" className="text-muted-foreground hover:text-primary font-medium flex items-center gap-1.5">
+                          <strong className="font-semibold text-[#070b19]">USA:</strong>
                           <span>+1 (312) 313-9125</span>
-                          <span className="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-700">
-                            <svg className="w-3.5 h-2.5 rounded-[1px] inline-block shrink-0" viewBox="0 0 640 480">
-                              <path fill="#bd3d44" d="0 0h640v480H0z"/>
-                              <path stroke="#fff" strokeWidth="37" d="0 55.5h640M0 130h640M0 204h640M0 278h640M0 352h640M0 426h640"/>
-                              <path fill="#192f5d" d="0 0h256v258H0z"/>
-                            </svg>
-                            US
-                          </span>
                         </a>
                       </div>
                     </div>
