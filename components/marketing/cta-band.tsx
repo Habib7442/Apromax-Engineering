@@ -21,8 +21,8 @@ export default function CTABand() {
           <h2 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-2">
             Ready to Build with AproMax?
           </h2>
-          <p className="text-white/70 text-[13.5px] md:text-sm max-w-lg leading-relaxed">
-            Get in touch to secure an NDA, discuss tolerances, evaluate simulation boundary conditions, or schedule a direct consult with our engineering leads.
+          <p className="text-white/70 text-[13.5px] md:text-sm max-w-xl leading-relaxed">
+            Have an engineering challenge or project in mind? Connect with AproMax to discuss your requirements, secure an NDA and explore the right engineering solution with our team.
           </p>
         </div>
 

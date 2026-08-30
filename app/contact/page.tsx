@@ -126,7 +126,7 @@ export default function ContactPage() {
               Have an engineering project in mind?
             </h1>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-none">
-              Share your requirements with our team. We will review your project and connect with you to discuss the scope, deliverables and next steps.
+              Have an engineering challenge or project in mind? Connect with AproMax to discuss your requirements, secure an NDA and explore the right engineering solution with our team.
             </p>
           </div>
 
