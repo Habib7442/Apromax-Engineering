@@ -79,11 +79,12 @@ export default function ContactPage() {
 
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
     const serviceLabels: Record<string, string> = {
-      engineering: "Engineering (Mechanical/Electrical)",
-      design: "CAD Design & 3D Modeling",
-      analysis: "Analysis & Simulation (FEA/CFD)",
-      development: "Web & App Development",
-      other: "Specialized Services"
+      "engineering": "Engineering Services — Mechanical, Piping, Structural, Electrical & Controls",
+      "drafting-3d": "Drafting & 3D Modeling",
+      "electronics-product": "Electronics & Product Design",
+      "software-digital": "Software & Digital Solutions",
+      "analysis-simulation": "Analysis & Simulation",
+      "specialized-services": "Specialized Services"
     };
     const serviceLabel = serviceLabels[formData.service] || formData.service;
     const notes = `Company: ${formData.company || "N/A"}\nPhone: ${formData.phone || "N/A"}\nCountry: ${formData.country || "N/A"}\nService: ${serviceLabel}\nDetails: ${formData.message || "N/A"}`;
@@ -359,11 +360,12 @@ export default function ContactPage() {
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground outline-none transition-all appearance-none cursor-pointer"
                       >
-                        <option value="engineering">Engineering (Mechanical/Electrical)</option>
-                        <option value="design">CAD Design & 3D Modeling</option>
-                        <option value="analysis">Analysis & Simulation (FEA/CFD)</option>
-                        <option value="development">Web & App Development</option>
-                        <option value="other">Specialized Services</option>
+                        <option value="engineering">Engineering Services — Mechanical, Piping, Structural, Electrical &amp; Controls</option>
+                        <option value="drafting-3d">Drafting &amp; 3D Modeling</option>
+                        <option value="electronics-product">Electronics &amp; Product Design</option>
+                        <option value="software-digital">Software &amp; Digital Solutions</option>
+                        <option value="analysis-simulation">Analysis &amp; Simulation</option>
+                        <option value="specialized-services">Specialized Services</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
                         <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

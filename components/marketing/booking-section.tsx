@@ -68,11 +68,12 @@ export default function BookingSection() {
 
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
     const serviceLabels: Record<string, string> = {
-      engineering: "Engineering (Mechanical/Electrical)",
-      design: "Design Services",
-      development: "Web and App Development",
-      analysis: "Analysis Services",
-      other: "Specialized Services"
+      "engineering": "Engineering Services — Mechanical, Piping, Structural, Electrical & Controls",
+      "drafting-3d": "Drafting & 3D Modeling",
+      "electronics-product": "Electronics & Product Design",
+      "software-digital": "Software & Digital Solutions",
+      "analysis-simulation": "Analysis & Simulation",
+      "specialized-services": "Specialized Services"
     };
     const serviceLabel = serviceLabels[formData.service] || formData.service;
     const notes = `Company: ${formData.company || "N/A"}\nPhone: ${formData.phone || "N/A"}\nCountry: ${formData.country || "N/A"}\nService: ${serviceLabel}\nDetails: ${formData.message || "N/A"}`;
@@ -264,12 +265,12 @@ export default function BookingSection() {
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full bg-[#0d1527] border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors cursor-pointer"
                     >
-                      <option value="engineering">Engineering (Mechanical/Electrical)</option>
-                      <option value="design">Design &amp; 3D Modeling (CAD)</option>
-                      <option value="analysis">Analysis &amp; Simulation (FEA/CFD)</option>
-                      <option value="prototyping">Prototyping &amp; Development</option>
-                      <option value="web-app">Web &amp; Custom App Development</option>
-                      <option value="specialized">Specialized / Niche Services</option>
+                      <option value="engineering">Engineering Services — Mechanical, Piping, Structural, Electrical &amp; Controls</option>
+                      <option value="drafting-3d">Drafting &amp; 3D Modeling</option>
+                      <option value="electronics-product">Electronics &amp; Product Design</option>
+                      <option value="software-digital">Software &amp; Digital Solutions</option>
+                      <option value="analysis-simulation">Analysis &amp; Simulation</option>
+                      <option value="specialized-services">Specialized Services</option>
                     </select>
                   </div>
 
