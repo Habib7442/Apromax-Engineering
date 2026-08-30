@@ -36,7 +36,10 @@
   - Interactive datatables with inline editing/deleting for inbound leads (`/admin/leads`) and candidates (`/admin/applications`).
   - Blogs and Case Studies listing, authoring, and modifying interfaces (`/admin/blogs`, `/admin/case-studies`).
 - **Dynamic Public Feeds:** Connected `/blog` and `/case-studies` along with their dynamic nested `[slug]` pages to query directly from the Supabase `blogs` and `case_studies` tables.
-
+- **Navbar & Navigation Polish:** Reordered navigation links (`Home`, `About`, `Services`, `Industries`, `Careers`, `Insights`), enlarged link & CTA text sizes, and wrapped logo in a white background pill badge.
+- **Hero & Landing Section Refinement:** Configured hero video background (`public/hero_video.mp4`), light teal/royal blue headline hierarchy, Approach, Maximize, Optimize pill badge, and streamlined section ordering.
+- **Interactive FAQ Section:** Added custom Framer Motion `FAQSection` (`components/marketing/faq.tsx`) featuring company overview, 12-item 2-column services list, 10-item 2-column industries list, business hours, contact details, and project delivery process.
+- **Contact Page Layout Polish:** Updated contact header copy, single-line headline title, 2-line formatted description, and reduced gap above contact boxes grid.
 
 ## In Progress
 
