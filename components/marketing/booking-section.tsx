@@ -75,8 +75,7 @@ export default function BookingSection() {
               <span className="text-accent">project in mind?</span>
             </h2>
             <p className="text-[#ECEFF4] text-sm md:text-base leading-relaxed max-w-lg">
-              <span className="block">Share your requirements with our team. We will review your project and</span>
-              <span className="block">connect with you to discuss the scope, deliverables and next steps.</span>
+              Share your requirements with our team. We will review your project and connect with you to discuss the scope, deliverables and next steps.
             </p>
           </motion.div>
 
