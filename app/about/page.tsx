@@ -50,9 +50,9 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6 text-[#070b19]"
+              className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6 text-primary whitespace-nowrap"
             >
-              About AproMax <span className="text-primary">Engineering LLP</span>
+              About AproMax Engineering LLP
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0 }}
