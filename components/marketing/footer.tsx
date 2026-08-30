@@ -63,12 +63,17 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               <li>
                 <Link href="/services/engineering" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Engineering
+                  Engineering Services
                 </Link>
               </li>
               <li>
                 <Link href="/services/design" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Design &amp; 3D Modeling
+                  Drafting &amp; 3D Modeling
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/prototyping" className="text-white/60 hover:text-white text-xs transition-colors">
+                  Product Design &amp; Development
                 </Link>
               </li>
               <li>
@@ -77,18 +82,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/prototyping" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Prototyping &amp; Testing
-                </Link>
-              </li>
-              <li>
                 <Link href="/services/web-app" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Web &amp; App Development
+                  Software &amp; Digital Solutions
                 </Link>
               </li>
               <li>
                 <Link href="/services/specialized" className="text-white/60 hover:text-white text-xs transition-colors">
-                  Specialized Services
+                  Other Services
                 </Link>
               </li>
             </ul>
