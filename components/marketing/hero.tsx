@@ -51,17 +51,17 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-heading font-bold tracking-tight leading-[1.15] mb-3 sm:mb-6 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              <span className="block text-[28px] xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#2563eb] mb-1 sm:mb-2">
+            <h1 className="font-heading font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6 text-center drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+              <span className="block text-[34px] xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#2563eb] mb-1.5 sm:mb-2">
                 Engineering Services
               </span>
-              <span className="block text-[22px] xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
+              <span className="block text-[26px] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
                 Creative &amp; Professional
               </span>
             </h1>
 
             {/* Brief description */}
-            <p className="text-[#ECEFF4] text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl mb-6 sm:mb-8 text-center drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)] font-normal px-2">
+            <p className="text-[#ECEFF4] text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-6 sm:mb-8 text-center drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)] font-normal px-2">
               <strong className="font-bold text-white">AproMax Engineering</strong> is a multidisciplinary firm combining expertise in engineering, design, and technology to drive progress and innovation. Our team of passionate problem-solvers delivers innovative solutions that meet unique client needs.
             </p>
 
