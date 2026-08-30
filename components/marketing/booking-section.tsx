@@ -280,7 +280,7 @@ export default function BookingSection() {
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Brief description of requirements, tolerances, or solver inputs..."
+                      placeholder="Briefly describe your project, required deliverables, software/platforms and expected timeline."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none min-h-[70px]"

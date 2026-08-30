@@ -383,7 +383,7 @@ export default function ContactPage() {
                       id="message"
                       rows={4}
                       required
-                      placeholder="Brief description of requirements, tolerances, or solver inputs..."
+                      placeholder="Briefly describe your project, required deliverables, software/platforms and expected timeline."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full bg-white border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-slate-400 outline-none transition-all resize-none"
