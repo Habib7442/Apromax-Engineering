@@ -161,13 +161,13 @@ export default function ContactPage() {
 
               {/* NDA Protection banner */}
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex gap-4 items-start">
-                <div className="size-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0">
+                <div className="size-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
                   <ShieldCheck className="size-5 text-emerald-600" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-semibold text-sm text-[#070b19] mb-1">NDA Secured Scoping</h4>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    We maintain absolute intellectual property safety. All CAD files, FEA/CFD models, and source code are protected under robust corporate confidentiality agreements.
+                  <h4 className="font-heading font-semibold text-sm md:text-base text-[#070b19] mb-1">Confidential &amp; NDA-Supported</h4>
+                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">
+                    We understand the importance of protecting engineering designs, intellectual property and project information. NDA-supported engagements are available, with secure handling of CAD files, engineering documents, source code and other project data.
                   </p>
                 </div>
               </div>
