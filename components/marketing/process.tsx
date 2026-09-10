@@ -43,7 +43,7 @@ const itemVariants: Variants = {
 export default function Process() {
   return (
     <section className="bg-white py-20 lg:py-28 border-b border-border relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-bold text-primary uppercase tracking-widest mb-3">

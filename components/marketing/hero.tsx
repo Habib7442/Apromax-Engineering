@@ -36,7 +36,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#070b19]/80" />
       </div>
 
-      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-12 relative z-10 py-4 sm:py-12">
+      <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-4 sm:py-12">
         <div className="flex flex-col items-center text-center text-white max-w-4xl mx-auto">
           {/* Content Block */}
           <motion.div

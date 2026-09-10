@@ -132,7 +132,7 @@ export default function TrustBar() {
 
   return (
     <section className="bg-white border-y border-border py-8">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-6">
             Engineering Capabilities Powered by Industry-Standard Toolsets

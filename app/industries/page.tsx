@@ -59,7 +59,7 @@ export default function IndustriesPage() {
         <div className="absolute top-[15%] left-[5%] w-96 h-96 rounded-full bg-blue-100/30 blur-[130px] pointer-events-none transform-gpu" />
         <div className="absolute bottom-[20%] right-[5%] w-[450px] h-[450px] rounded-full bg-cyan-100/20 blur-[130px] pointer-events-none transform-gpu" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header section */}
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">

@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
       {/* Background decoration */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[radial-gradient(circle,_rgba(6,182,212,0.05)_0%,_transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Row 1: Copy on Left, 4 Grid Cards on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-12">
           {/* Left copy text block - Animates from left */}

@@ -117,7 +117,7 @@ export default function Header() {
           : "bg-transparent py-5 border-transparent"
       )}
     >
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo container with white background pill for original logo */}
         <Link href="/" className="flex items-center gap-2 group bg-white px-3 py-1.5 rounded-lg shadow-sm hover:shadow transition-all border border-slate-200/50">
           <Image

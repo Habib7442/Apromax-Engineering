@@ -16,7 +16,7 @@ export default function CTABand() {
         }}
       />
       
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
         <div>
           <h2 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-2">
             Ready to Build with AproMax?

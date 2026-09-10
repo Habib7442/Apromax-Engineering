@@ -200,7 +200,7 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="py-20 lg:py-28 bg-[#f8fafc] border-b border-slate-200 relative overflow-hidden">
-      <div className="max-w-[1000px] mx-auto px-4 md:px-8 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a5cf0] bg-[#0a5cf0]/10 border border-[#0a5cf0]/20 px-3 py-1 rounded-full uppercase tracking-widest mb-3">

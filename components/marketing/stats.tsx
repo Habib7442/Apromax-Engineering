@@ -57,7 +57,7 @@ export default function Stats() {
         }}
       />
       
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -90,7 +90,7 @@ export default function Stats() {
                 </h4>
                 
                 {/* Desc */}
-                <p className="text-white/60 text-[12px] leading-relaxed max-w-[220px]">
+                <p className="text-white/60 text-[12px] leading-relaxed max-w-[260px]">
                   {stat.desc}
                 </p>
               </motion.div>

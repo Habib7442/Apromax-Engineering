@@ -100,7 +100,7 @@ export default function BookingSection() {
       <div className="absolute top-[20%] left-[15%] w-96 h-96 rounded-full bg-[#0a5cf0]/15 blur-[120px] pointer-events-none transform-gpu" />
       <div className="absolute bottom-[20%] right-[15%] w-96 h-96 rounded-full bg-[#06b6d4]/10 blur-[130px] pointer-events-none transform-gpu" />
 
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Side: Copywriting */}

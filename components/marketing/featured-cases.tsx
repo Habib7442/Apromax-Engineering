@@ -76,7 +76,7 @@ export default function FeaturedCases() {
 
   return (
     <section className="bg-background py-20 lg:py-28 border-b border-border relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           {/* Left panel: Big Typography and Call to Action - Slides from Left */}
           <motion.div 

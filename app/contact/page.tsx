@@ -115,7 +115,7 @@ export default function ContactPage() {
       <div className="h-[76px]" />
 
       <main className="flex-grow py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header section */}
           <div className="w-full max-w-none mb-6 md:mb-8">
